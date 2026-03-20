@@ -1,0 +1,414 @@
+================================================================================
+THESIS CITATIONS & BIBLIOGRAPHY NOTES
+"Does Institutional Adoption Change Bitcoin's Sensitivity to Macroeconomic
+ Factors? Evidence from the Spot ETF Approval"
+================================================================================
+
+================================================================================
+CLUSTER A — Bitcoin & Macroeconomic Factors (11 papers)
+================================================================================
+
+A1.  Karau, S. (2023). Monetary policy and Bitcoin.
+     Journal of International Money and Finance, 137(C).
+     DOI: 10.1016/j.jimonfin.2023.102880
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S0261560623000815
+     Note: Bitcoin's sensitivity to Fed shocks increased substantially post-2020
+           — core empirical precedent for H1.
+
+A2.  Ma, C., Tian, Y., Hsiao, S., & Deng, L. (2022). Monetary policy shocks
+     and Bitcoin prices. Research in International Business and Finance, 62(C).
+     DOI: 10.1016/j.ribaf.2022.101711
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S027553192200099X
+     Note: 1bp surprise tightening → -0.25% BTC on FOMC days; benchmark for
+           comparing your dFedRate coefficient magnitude.
+
+A3.  Benigno, G., & Rosa, C. (2023). The Bitcoin-macro disconnect.
+     Federal Reserve Bank of New York Staff Report No. 1052. SSRN: 4373434.
+     URL: https://www.newyorkfed.org/research/staff_reports/sr1052
+     Note: Establishes pre-2020 baseline of BTC being orthogonal to macro news
+           — the "before" state that your PostETF dummy tests against.
+
+A4.  Che, N., Copestake, A., Furceri, D., & Terracciano, T. (2023). The crypto
+     cycle and US monetary policy. IMF Working Paper 2023/163.
+     DOI: 10.5089/9798400245411.001
+     URL: https://www.imf.org/en/Publications/WP/Issues/2023/08/04/The-Crypto-Cycle-and-US-Monetary-Policy-534834
+     Note: Fed tightening → -0.15 SD crypto factor (larger than equities);
+           links this explicitly to institutional investor entry. Also relevant
+           to Cluster E (balance sheet channel).
+
+A5.  Lin, M., Liu, Y., & Sheng, V. N. K. (2025). Analysis of the impact of
+     macroeconomic factors on cryptocurrency returns: Based on a quantile
+     regression study. International Review of Economics & Finance, 97(C).
+     DOI: 10.1016/j.iref.2024.103757
+     URL: https://www.sciencedirect.com/science/article/pii/S1059056024007494
+     Note: USD exchange rate and Treasury yields significantly drive BTC returns
+           on 2018-2024 data — same macro variables as your model.
+
+A6.  Lyócsa, S., Molnár, P., Plíhal, T., & Širaňová, M. (2020). Impact of
+     macroeconomic news, regulation and hacking exchange markets on the
+     volatility of Bitcoin. Journal of Economic Dynamics and Control, 119(C).
+     DOI: 10.1016/j.jedc.2020.103980
+     URL: https://www.sciencedirect.com/science/article/pii/S0165188920301482
+     Note: Pre-2020: scheduled US macro news had minimal effect on BTC
+           volatility — provides the pre-institutional contrast for H1.
+
+A7.  Elsayed, A. H., & Sousa, R. M. (2022). International monetary policy and
+     cryptocurrency markets: Dynamic and spillover effects.
+     The European Journal of Finance, 30(16), 1855-1875.
+     DOI: 10.1080/1351847X.2022.2068375
+     URL: https://www.tandfonline.com/doi/full/10.1080/1351847X.2022.2068375
+     Note: TVP-VAR: G4 central bank policy rates → BTC/LTC/XRP spillovers;
+           extends the Fed-centric frame to international context.
+
+A8.  Buthelezi, E. M. (2025). Cryptocurrency responses to U.S. monetary policy
+     shocks: A data-driven exploration of price and volatility patterns.
+     The American Economist, 70(1), 94-119.
+     DOI: 10.1177/05694345241269036
+     URL: https://journals.sagepub.com/doi/10.1177/05694345241269036
+     Note: Markov-switching GARCH on 2015-2023 data; tightening decreases
+           crypto prices across regimes — similar sample period to yours.
+
+A9.  Choi, S., & Shin, J. (2022). Bitcoin: An inflation hedge but not a safe
+     haven. Finance Research Letters, 46(PB).
+     DOI: 10.1016/j.frl.2021.102379
+     URL: https://www.sciencedirect.com/science/article/pii/S1544612321003810
+     Note: VAR separates BTC response to inflation shocks (positive) vs.
+           financial uncertainty (negative) — directly covers your VIX and
+           dFedRate variables.
+
+A10. Mahmoudi, M. (2023). Examining the effect of monetary policy and monetary
+     policy uncertainty on cryptocurrencies market. arXiv:2311.10739.
+     URL: https://arxiv.org/abs/2311.10739
+     *** PREPRINT — not peer-reviewed. Cite as working paper. ***
+     Note: MPU decreases BTC returns in both volatility regimes using
+           Markov-switching VAR on 2010-2023 data.
+
+A11. Liu, Y., & Tsyvinski, A. (2021). Risks and returns of cryptocurrency.
+     The Review of Financial Studies, 34(6), 2689-2727.
+     DOI: 10.1093/rfs/hhaa113
+     URL: https://academic.oup.com/rfs/article-abstract/34/6/2689/5912024
+     Note: Landmark paper: crypto returns had no exposure to standard macro or
+           stock-market factors — the foundational baseline your thesis challenges.
+
+================================================================================
+CLUSTER B — Bitcoin Halving Effects (7 papers)
+================================================================================
+
+B1.  Lashkaripour, M. (2024). Some stylized facts about Bitcoin halving.
+     Finance Research Letters, 69(PB).
+     DOI: 10.1016/j.frl.2024.106198
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S1544612324012273
+     Note: Documents that halving sensitivity weakened over successive cycles;
+           directly supports H2's prediction of diminished post-ETF effect.
+
+B2.  Fabus, J., Kremenova, I., Stalmasekova, N., & Kvasnicova-Galovicova, T.
+     (2024). An empirical examination of Bitcoin's halving effects: Assessing
+     cryptocurrency sustainability within the landscape of financial technologies.
+     Journal of Risk and Financial Management, 17(6), 229.
+     DOI: 10.3390/jrfm17060229
+     URL: https://www.mdpi.com/1911-8074/17/6/229
+     Note: RSI, MACD, and regression analysis on 2012, 2016, 2020 halvings;
+           documents the predictable post-halving price cycle benchmark.
+
+B3.  Veloso, V., Gatsios, R. C., Magnani, V. M., & Lima, F. G. (2025). Is
+     Bitcoin's market maturing? Cumulative abnormal returns and volatility in
+     the 2024 halving and past cycles.
+     Journal of Risk and Financial Management, 18(5), 242.
+     DOI: 10.3390/jrfm18050242
+     URL: https://www.mdpi.com/1911-8074/18/5/242
+     *** VERIFY DOI before submission — very recent publication. ***
+     Note: Directly compares all four halvings; finds 2024 showed smaller, less
+           significant price reactions — strongest direct support for H2.
+
+B4.  Liu, W., Zhao, X., Li, W., & Wang, Y. (2025). The effect of the
+     cryptocurrency halving event. Pacific-Basin Finance Journal, 94, 102913.
+     DOI: 10.1016/j.pacfin.2025.102913
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S0927538X25002501
+     *** VERIFY DOI before submission — very recent publication. ***
+     Note: Negative CAARs around halving dates; effects attributed to
+           attention-driven trading rather than supply fundamentals.
+
+B5.  Subawa, N. S., Mimaki, C. A., Mahendra, I. M. O., & Utami, M. S. M.
+     (2025). Bitcoin halving: How effective is it in driving cryptocurrency
+     market dynamics? Journal of Risk and Financial Management, 19(1), 2.
+     DOI: 10.3390/jrfm19010002
+     URL: https://www.mdpi.com/1911-8074/19/1/2
+     Note: PLS-SEM: halvings affect prices via sentiment and regulatory channels
+           — mechanism explaining why efficiency gains post-ETF reduce the effect.
+
+B6.  Mensi, W., Al-Yahyaee, K. H., & Kang, S. H. (2019). Structural breaks and
+     double long memory of cryptocurrency prices: A comparative analysis from
+     Bitcoin and Ethereum. Finance Research Letters, 29(C), 222-230.
+     DOI: 10.1016/j.frl.2018.07.011
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S1544612318303076
+     Note: FIGARCH + break dummies applied to BTC — methodological precedent
+           for the thesis's structural break approach. Also relevant to Cluster F.
+
+B7.  Liu, Y., Tsyvinski, A., & Wu, X. (2022). Common risk factors in
+     cryptocurrency. The Journal of Finance, 77(2), 1133-1177.
+     DOI: 10.1111/jofi.13119
+     URL: https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.13119
+     Note: Identifies crypto-specific momentum and size factors; provides basis
+           for comparing pre- vs. post-ETF factor structures (H2).
+
+================================================================================
+CLUSTER C — Spot Bitcoin ETF & Institutional Adoption (8 papers)
+================================================================================
+
+C1.  Mohamad, A. (2025). Do Bitcoin ETFs lead price discovery following their
+     introduction in the Bitcoin market? Computational Economics, 66, 947-969.
+     DOI: 10.1007/s10614-025-10998-x
+     URL: https://link.springer.com/article/10.1007/s10614-025-10998-x
+     Note: Spot ETFs (IBIT, FBTC, GBTC) dominate price discovery ~85% of the
+           time post-Jan 2024 — directly validates your PostETF breakpoint date.
+
+C2.  Kia, K., Song, V. Y., & Xu, K. (2025). Price discovery in Bitcoin ETF
+     market. The Financial Review.
+     DOI: 10.1111/fire.70026
+     URL: https://onlinelibrary.wiley.com/doi/10.1111/fire.70026
+     Note: After Jan 10, 2024, spot market overtook futures-ETFs as the primary
+           price discovery venue — confirms the structural significance of your
+           ETF breakpoint.
+
+C3.  Babalos, V., Bouri, E., & Gupta, R. (2025). Does the introduction of US
+     spot Bitcoin ETFs affect spot returns and volatility of major
+     cryptocurrencies? The Quarterly Review of Economics and Finance, 102.
+     DOI: 10.1016/j.qref.2025.102006
+     URL: https://www.sciencedirect.com/science/article/pii/S106297692500047X
+     Note: ETF introduction increased BTC returns and reduced BTC/XRP volatility
+           — direct test of the PostETF dummy effect you model.
+
+C4.  Guliyev, T., & Ahmadova, A. (2025). From flows to value: Cointegration
+     between Bitcoin spot ETF assets and Bitcoin price. Ledger, 10, 154-172.
+     DOI: 10.5195/ledger.2025.393
+     URL: https://www.ledgerjournal.org/ojs/ledger/article/view/393
+     Note: ETF AUM cointegrated with BTC prices (Jan 2024 – May 2025);
+           confirms institutional flows exert sustained upward price influence.
+
+C5.  Liu, S., & Yang, C. (2024). Spot cryptocurrency ETFs: Crypto investment
+     products or stepping stones toward tokenization.
+     Finance Research Letters, 69(PB).
+     DOI: 10.1016/j.frl.2024.106150
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S1544612324011796
+     Note: ETF approval elevated BTC legitimacy and liquidity — mechanism-level
+           account for why macro factor exposures would change post-ETF (H1).
+
+C6.  Hong, Y., Feng, H., Wang, Y., & Li, B. (2025). The impact of Bitcoin ETF
+     approval on Bitcoin's hedging properties against traditional assets.
+     arXiv:2512.12815.
+     DOI: 10.48550/arXiv.2512.12815
+     URL: https://arxiv.org/abs/2512.12815
+     *** PREPRINT — not peer-reviewed. Cite as working paper. ***
+     Note: DCC-GARCH: BTC-equity correlation increased post-ETF, hedging
+           effectiveness changed — directly relevant to H1's interaction terms.
+
+C7.  Boan, D., Pham, H., & Nguyen Thanh, B. (2021). Price discovery in the
+     cryptocurrency market: Evidence from institutional activity.
+     Journal of Industrial and Business Economics, 49(1), 111-131.
+     DOI: 10.1007/s40812-021-00202-0
+     URL: https://link.springer.com/article/10.1007/s40812-021-00202-0
+     Note: Pre-ETF: institutional Bitcoin futures trading shaped BTC-S&P 500
+           correlations — provides the pre-institutional baseline for H1.
+
+C8.  Wu, D. (2025). Institutional adoption and correlation dynamics: Bitcoin's
+     evolving role in financial markets. arXiv:2501.09911.
+     URL: https://arxiv.org/abs/2501.09911
+     *** PREPRINT — not peer-reviewed. Cite as working paper. ***
+     Note: Rolling BTC-S&P500/Nasdaq correlations peaked at 0.87 in 2024
+           following institutional milestones — strong narrative support for H1.
+
+================================================================================
+CLUSTER D — Bitcoin as an Asset Class / Market Integration (7 papers)
+================================================================================
+
+D1.  Bouri, E., Kristoufek, L., & Azoury, N. (2022). Bitcoin and S&P500:
+     Co-movements of high-order moments in the time-frequency domain.
+     PLOS ONE, 17(11), e0277924.
+     DOI: 10.1371/journal.pone.0277924
+     URL: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277924
+     Note: Very weak BTC-S&P co-movement before 2018, strengthened afterward —
+           benchmarks your R_SP500 regression coefficient over time.
+
+D2.  Nguyen, K. Q. (2022). The correlation between the stock market and Bitcoin
+     during COVID-19 and other uncertainty periods.
+     Finance Research Letters, 46(PA).
+     DOI: 10.1016/j.frl.2021.102284
+     URL: https://www.sciencedirect.com/science/article/pii/S1544612321003238
+     Note: VAR(1)-GARCH(1,1): S&P 500 significantly drove BTC during COVID-19;
+           macro-financial integration varies with market stress regimes.
+
+D3.  Corbet, S., Meegan, A., Larkin, C., Lucey, B., & Yarovaya, L. (2018).
+     Exploring the dynamic relationships between cryptocurrencies and other
+     financial assets. Economics Letters, 165, 28-34.
+     DOI: 10.1016/j.econlet.2018.01.004
+     URL: https://www.sciencedirect.com/science/article/pii/S0165176518300387
+     Note: Seminal paper: pre-2018 crypto was relatively isolated from
+           traditional financial assets — the starting historical baseline.
+
+D4.  Bakry, W., Rashid, A., Al-Mohamad, S., & El-Kanj, N. (2021). Bitcoin and
+     portfolio diversification: A portfolio optimization approach.
+     Journal of Risk and Financial Management, 14(7), 282.
+     DOI: 10.3390/jrfm14070282
+     URL: https://www.mdpi.com/1911-8074/14/7/282
+     Note: BTC as diversifier in normal conditions; borderline safe-haven —
+           compare these pre-ETF properties to post-ETF era results.
+
+D5.  Hernandez, J. A., Hasan, M. Z., & McIver, R. P. (2023). Bitcoin, gold,
+     and the VIX: Short- and long-term effects of economic policy uncertainty.
+     Applied Economics Letters, 30(6), 761-765.
+     DOI: 10.1080/13504851.2021.2018125
+     URL: https://www.tandfonline.com/doi/full/10.1080/13504851.2021.2018125
+     Note: ARDL: EPU negatively impacts BTC short-term, positively long-term —
+           directly pertains to your VIX control variable.
+
+D6.  Yi, E., Yang, B., Jeong, M., et al. (2023). Market efficiency of
+     cryptocurrency: Evidence from the Bitcoin market.
+     Scientific Reports, 13, 4789.
+     DOI: 10.1038/s41598-023-31618-4
+     URL: https://www.nature.com/articles/s41598-023-31618-4
+     Note: Weak-form efficiency evidence for BTC; context for H2 — more
+           efficient markets pre-price halvings, diminishing the effect.
+
+D7.  Marti, R., & Reimat, A. (2025). Bitcoin and global stock portfolio:
+     Dynamics across short and long-term horizons.
+     Finance Research Letters, 108918.
+     DOI: 10.1016/j.frl.2025.108918
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S1544612325021713
+     Note: 1% MSCI World rise → 4.8% BTC rise by 2025; evidence of deep macro
+           integration post-ETF supporting H1's direction.
+
+================================================================================
+CLUSTER E — Fed Balance Sheet / QE and Risk Assets (3 unique papers)
+================================================================================
+
+E1.  Zhao, Y., Zhang, M., Pei, Z., & Nan, J. (2023). The effects of
+     quantitative easing on Bitcoin prices.
+     Finance Research Letters, 57.
+     DOI: 10.1016/j.frl.2023.104206
+     URL: https://www.sciencedirect.com/science/article/abs/pii/S1544612323006049
+     Note: TVP-VAR on 2017-2023: QE exerts long-term positive impact on BTC
+           via liquidity channel — directly supports your FedBS variable.
+
+E2.  Aloui, D., Zouaoui, R., Rachdi, H., Guesmi, K., & Yarovaya, L. (2024).
+     The impact of ECB's quantitative easing on cryptocurrency markets during
+     times of crisis. Research in International Business and Finance, 69.
+     DOI: 10.1016/j.ribaf.2023.102203
+     URL: https://www.sciencedirect.com/science/article/pii/S027553192300329X
+     Note: TVP-BVAR-SV: QE effects on crypto are non-linear and
+           regime-dependent; complements your HAC/OLS approach.
+
+E3.  Gu, C., Lv, B., Liu, Y., & Peng, G. (2021). The impact of quantitative
+     easing on cryptocurrency.
+     International Journal of Economics and Financial Issues, 11(4), 27-34.
+     URL: https://ideas.repec.org/a/eco/journ1/2021-04-4.html
+     Note: Event study around Fed's March 2020 unlimited-QE announcement;
+           confirms significant positive impact on BTC/ETH returns.
+
+================================================================================
+CLUSTER F — Methodology: HAC, Structural Breaks (4 unique papers)
+================================================================================
+
+F1.  Newey, W. K., & West, K. D. (1987). A simple, positive semi-definite,
+     heteroskedasticity and autocorrelation consistent covariance matrix.
+     Econometrica, 55(3), 703-708.
+     DOI: 10.2307/1913610
+     URL: https://www.nber.org/papers/t0055
+     Note: The foundational HAC estimator paper — mandatory citation whenever
+           Newey-West standard errors are used (as in all your models).
+
+F2.  White, H. (1980). A heteroskedasticity-consistent covariance matrix
+     estimator and a direct test for heteroskedasticity.
+     Econometrica, 48(4), 817-838.
+     DOI: 10.2307/1912934
+     URL: https://www.econometricsociety.org/publications/econometrica/1980/05/01/heteroskedasticity-consistent-covariance-matrix-estimator-and
+     Note: Precursor to the Newey-West estimator; standard co-citation alongside
+           F1 when reporting robust standard errors.
+
+F3.  Chow, G. C. (1960). Tests of equality between sets of coefficients in two
+     linear regressions. Econometrica, 28(3), 591-605.
+     DOI: 10.2307/1910133
+     URL: https://www.econometricsociety.org/publications/econometrica/1960/07/01/tests-equality-between-sets-coefficients-two-linear-regressions
+     Note: The original Chow test paper — mandatory citation for your
+           structural break analysis at the ETF breakpoint.
+
+F4.  Bai, J., & Perron, P. (1998). Estimating and testing linear models with
+     multiple structural changes. Econometrica, 66(1), 47-78.
+     DOI: 10.2307/2998540
+     URL: https://www.econometricsociety.org/publications/econometrica/1998/01/01/estimating-and-testing-linear-models-multiple-structural
+     Note: Framework for multiple structural break testing — cite as
+           methodological context for why you tested alternative breakpoints
+           (Oct 2023 vs Jan 2024) alongside the Chow test.
+
+================================================================================
+CROSS-CLUSTER OVERLAPS (papers listed in two clusters above)
+================================================================================
+
+  A1 / E5  — Karau (2023): also relevant to Fed balance sheet channel
+  A4 / E4  — Che et al. (2023): also covers QE/balance sheet mechanism
+  B6 / F5  — Mensi et al. (2019): also relevant as methodology precedent
+
+================================================================================
+CITATION COUNTS BY CLUSTER
+================================================================================
+
+  Cluster A — Bitcoin & Macro Factors:      11 papers
+  Cluster B — Bitcoin Halving Effects:       7 papers
+  Cluster C — Spot ETF & Institutional:      8 papers
+  Cluster D — Bitcoin as Asset Class:        7 papers
+  Cluster E — Fed Balance Sheet / QE:        3 unique papers
+  Cluster F — Methodology:                   4 unique papers
+  -----------------------------------------------
+  Total unique papers:                      ~40 papers
+
+================================================================================
+RECOMMENDATIONS & WARNINGS BEFORE SUBMISSION
+================================================================================
+
+1. VERIFY BEFORE CITING — VERY RECENT PAPERS (2025):
+   The following papers were published in 2025 and their DOIs should be
+   confirmed on the publisher website before submission:
+
+     B3  Veloso et al. (2025) — DOI: 10.3390/jrfm18050242
+     B4  Liu et al. (2025)    — DOI: 10.1016/j.pacfin.2025.102913
+     C1  Mohamad (2025)       — DOI: 10.1007/s10614-025-10998-x
+     C2  Kia et al. (2025)    — DOI: 10.1111/fire.70026
+     C3  Babalos et al. (2025)— DOI: 10.1016/j.qref.2025.102006
+     D7  Marti & Reimat (2025)— DOI: 10.1016/j.frl.2025.108918
+
+2. PREPRINTS — NOT YET PEER-REVIEWED:
+   The following are arXiv preprints. Cite them explicitly as working papers
+   or preprints. Check before submission whether a peer-reviewed version
+   has since been published:
+
+     A10  Mahmoudi (2023)  — arXiv:2311.10739
+     C6   Hong et al. (2025) — arXiv:2512.12815
+     C8   Wu (2025)        — arXiv:2501.09911
+
+3. MANDATORY METHODOLOGY CITATIONS:
+   These four papers (F1-F4) are expected by any econometrics reviewer and
+   should appear in every version of the thesis:
+
+     F1  Newey & West (1987) — for HAC standard errors
+     F2  White (1980)        — for heteroskedasticity correction
+     F3  Chow (1960)         — for the structural break test
+     F4  Bai & Perron (1998) — for multiple break testing context
+
+4. HIGHEST-PRIORITY PAPERS FOR H1 (macro sensitivity):
+   If space is limited, prioritize: A1, A2, A3, A4, A11.
+   These five together establish the theoretical baseline (A3, A11),
+   empirical precedent (A1, A2), and IMF-level macro linkage (A4).
+
+5. HIGHEST-PRIORITY PAPERS FOR H2 (halving diminishment):
+   If space is limited, prioritize: B1, B3, B7.
+   B3 is particularly valuable as it directly compares the 2024 halving
+   to prior cycles and finds the weakest price reaction.
+
+6. FORMAT NOTE:
+   All citations above are written in approximate APA 7th edition style.
+   Double-check volume/issue/page numbers against the publisher page
+   for the final submission, especially for 2025 publications where
+   page numbers may be assigned as "Article in Press" at time of writing.
+
+================================================================================
+END OF CITATIONS FILE
+================================================================================
