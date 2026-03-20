@@ -1,0 +1,55 @@
+MODEL 1 — MONTHLY FREQUENCY ROBUSTNESS CHECK
+Sample: 2014-11-30 -> 2026-03-31  (137 monthly obs)
+HAC Newey-West SE, maxlags=3
+
+Resampling method:
+  Flow/return vars (R_BTC, R_SP500, dVIX, dFedRate, dFedBS): summed within month
+  Dummy/level vars (HalvingWindow, PostETF): last observation in month
+
+--- Key Hypothesis Coefficients ---
+
+H1: Increased macro sensitivity post-ETF
+  FedRate x PostETF : coef=-0.1449  p=0.4103  n.s.
+  FedBS x PostETF   : coef=-0.0853  p=0.0928  * p<0.10
+
+H2: Halving effect weakened post-ETF
+  HalvingWindow     : coef=+0.1345  p=0.0155  ** p<0.05
+  Halving x PostETF : coef=-0.1528  p=0.0680  * p<0.10
+  Total post-ETF halving effect (b_Halving + b_Halving*PostETF) = -0.0184
+
+--- Full OLS Summary ---
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  R_BTC   R-squared:                       0.185
+Model:                            OLS   Adj. R-squared:                  0.120
+Method:                 Least Squares   F-statistic:                     4.192
+Date:                Fri, 20 Mar 2026   Prob (F-statistic):           5.02e-05
+Time:                        10:33:49   Log-Likelihood:                 41.093
+No. Observations:                 137   AIC:                            -60.19
+Df Residuals:                     126   BIC:                            -28.07
+Df Model:                          10                                         
+Covariance Type:                  HAC                                         
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                -0.0051      0.027     -0.193      0.847      -0.057       0.047
+dFedRate             -0.0438      0.110     -0.397      0.691      -0.260       0.172
+dFedBS               -0.0042      0.006     -0.699      0.485      -0.016       0.008
+HalvingWindow         0.1345      0.056      2.420      0.016       0.026       0.243
+PostETF              -0.0442      0.048     -0.912      0.362      -0.139       0.051
+FedRate_x_PostETF    -0.1449      0.176     -0.823      0.410      -0.490       0.200
+FedBS_x_PostETF      -0.0853      0.051     -1.681      0.093      -0.185       0.014
+Halving_x_PostETF    -0.1528      0.084     -1.825      0.068      -0.317       0.011
+R_SP500               1.5698      0.611      2.567      0.010       0.371       2.768
+R_BTC_lag1           -0.0726      0.088     -0.826      0.409      -0.245       0.100
+dVIX                  0.0042      0.005      0.913      0.361      -0.005       0.013
+==============================================================================
+Omnibus:                        3.685   Durbin-Watson:                   1.905
+Prob(Omnibus):                  0.158   Jarque-Bera (JB):                4.367
+Skew:                          -0.028   Prob(JB):                        0.113
+Kurtosis:                       3.873   Cond. No.                         281.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 3 lags and without small sample correction

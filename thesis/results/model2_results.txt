@@ -1,0 +1,71 @@
+MODEL 2 -- Sub-Sample Split
+
+Pre-ETF  (484 obs): 2014-10-03 -> 2024-01-05
+Post-ETF (114 obs): 2024-01-12 -> 2026-03-13
+
+--- Pre-ETF ---
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  R_BTC   R-squared:                       0.073
+Model:                            OLS   Adj. R-squared:                  0.061
+Method:                 Least Squares   F-statistic:                     4.931
+Date:                Fri, 20 Mar 2026   Prob (F-statistic):           6.57e-05
+Time:                        10:22:04   Log-Likelihood:                 458.93
+No. Observations:                 484   AIC:                            -903.9
+Df Residuals:                     477   BIC:                            -874.6
+Df Model:                           6                                         
+Covariance Type:                  HAC                                         
+=================================================================================
+                    coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------
+const             0.0012      0.005      0.242      0.809      -0.009       0.011
+dFedRate         -0.1613      0.066     -2.436      0.015      -0.291      -0.032
+dFedBS           -0.0032      0.004     -0.836      0.403      -0.011       0.004
+HalvingWindow     0.0301      0.011      2.714      0.007       0.008       0.052
+R_SP500           0.3158      0.306      1.033      0.301      -0.283       0.915
+R_BTC_lag1        0.0296      0.045      0.659      0.510      -0.059       0.118
+dVIX             -0.0035      0.002     -1.555      0.120      -0.008       0.001
+==============================================================================
+Omnibus:                       31.761   Durbin-Watson:                   2.010
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              102.013
+Skew:                          -0.185   Prob(JB):                     7.05e-23
+Kurtosis:                       5.218   Cond. No.                         227.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 10 lags and without small sample correction
+
+--- Post-ETF ---
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  R_BTC   R-squared:                       0.078
+Model:                            OLS   Adj. R-squared:                  0.026
+Method:                 Least Squares   F-statistic:                     3.882
+Date:                Fri, 20 Mar 2026   Prob (F-statistic):            0.00152
+Time:                        10:22:04   Log-Likelihood:                 161.45
+No. Observations:                 114   AIC:                            -308.9
+Df Residuals:                     107   BIC:                            -289.7
+Df Model:                           6                                         
+Covariance Type:                  HAC                                         
+=================================================================================
+                    coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------
+const            -0.0022      0.012     -0.183      0.855      -0.026       0.021
+dFedRate         -0.0629      0.101     -0.621      0.535      -0.262       0.136
+dFedBS           -0.0237      0.018     -1.335      0.182      -0.058       0.011
+HalvingWindow     0.0018      0.013      0.139      0.889      -0.023       0.026
+R_SP500           0.3607      0.338      1.067      0.286      -0.302       1.023
+R_BTC_lag1        0.0908      0.066      1.376      0.169      -0.039       0.220
+dVIX             -0.0022      0.002     -0.982      0.326      -0.007       0.002
+==============================================================================
+Omnibus:                        7.607   Durbin-Watson:                   2.071
+Prob(Omnibus):                  0.022   Jarque-Bera (JB):                7.500
+Skew:                           0.499   Prob(JB):                       0.0235
+Kurtosis:                       3.764   Cond. No.                         316.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 10 lags and without small sample correction
+
+R-squared Pre-ETF : 0.0728
+R-squared Post-ETF: 0.0781

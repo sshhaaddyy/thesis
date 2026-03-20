@@ -1,0 +1,38 @@
+MODEL 1 -- Full-Sample Interaction Model
+Sample: 2014-10-03 -> 2026-03-13  (598 obs)
+HAC Newey-West SE, maxlags=10
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  R_BTC   R-squared:                       0.073
+Model:                            OLS   Adj. R-squared:                  0.057
+Method:                 Least Squares   F-statistic:                     3.674
+Date:                Fri, 20 Mar 2026   Prob (F-statistic):           8.84e-05
+Time:                        10:21:56   Log-Likelihood:                 603.66
+No. Observations:                 598   AIC:                            -1185.
+Df Residuals:                     587   BIC:                            -1137.
+Df Model:                          10                                         
+Covariance Type:                  HAC                                         
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                 0.0012      0.005      0.235      0.814      -0.009       0.011
+dFedRate             -0.1601      0.066     -2.415      0.016      -0.290      -0.030
+dFedBS               -0.0031      0.004     -0.800      0.424      -0.011       0.004
+HalvingWindow         0.0300      0.011      2.713      0.007       0.008       0.052
+PostETF              -0.0034      0.014     -0.255      0.799      -0.030       0.023
+FedRate_x_PostETF     0.0895      0.127      0.707      0.479      -0.159       0.338
+FedBS_x_PostETF      -0.0247      0.018     -1.361      0.174      -0.060       0.011
+Halving_x_PostETF    -0.0284      0.017     -1.627      0.104      -0.063       0.006
+R_SP500               0.3261      0.275      1.187      0.235      -0.212       0.865
+R_BTC_lag1            0.0352      0.041      0.853      0.394      -0.046       0.116
+dVIX                 -0.0032      0.002     -1.649      0.099      -0.007       0.001
+==============================================================================
+Omnibus:                       43.122   Durbin-Watson:                   2.019
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              166.073
+Skew:                          -0.162   Prob(JB):                     8.66e-37
+Kurtosis:                       5.561   Cond. No.                         239.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 10 lags and without small sample correction

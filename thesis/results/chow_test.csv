@@ -1,0 +1,3 @@
+breakpoint,date,n_pre,n_post,RSS_restricted,RSS_unrestricted,F_stat,p_value,reject_H0
+Jan 2024 (ETF approval),2024-01-10,484,114,4.699605,4.646657,0.9507,0.4667,False
+Oct 2023 (Grayscale/BlackRock),2023-10-23,473,125,4.699605,4.637479,1.1177,0.3501,False

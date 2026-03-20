@@ -1,0 +1,4 @@
+Breusch-Pagan Test
+LM stat: 35.5858
+p-value: 0.0001
+REJECT H0 (heteroskedasticity present)

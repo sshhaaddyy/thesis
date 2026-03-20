@@ -1,0 +1,53 @@
+RAMSEY RESET TEST — Model 1
+Sample: 2014-10-03 -> 2026-03-13  (598 obs)
+Base regressors (k=11): const, dFedRate, dFedBS, HalvingWindow, PostETF, FedRate_x_PostETF, FedBS_x_PostETF, Halving_x_PostETF, R_SP500, R_BTC_lag1, dVIX
+
+Procedure: add fitted^2 and fitted^3 to Model 1; test joint significance.
+  H0: no functional-form misspecification (coefficients on y_hat^2, y_hat^3 = 0)
+
+  F-statistic : 0.7540
+  df (num)    : 2
+  df (denom)  : 585
+  p-value     : 0.4709
+
+RESULT: Fail to reject H0 — no evidence of functional-form misspecification.
+
+--- Auxiliary regression summary ---
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  R_BTC   R-squared:                       0.076
+Model:                            OLS   Adj. R-squared:                  0.057
+Method:                 Least Squares   F-statistic:                     3.986
+Date:                Fri, 20 Mar 2026   Prob (F-statistic):           6.00e-06
+Time:                        10:32:16   Log-Likelihood:                 604.43
+No. Observations:                 598   AIC:                            -1183.
+Df Residuals:                     585   BIC:                            -1126.
+Df Model:                          12                                         
+Covariance Type:            nonrobust                                         
+=====================================================================================
+                        coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                 0.0006      0.005      0.120      0.905      -0.010       0.011
+dFedRate             -0.2010      0.065     -3.080      0.002      -0.329      -0.073
+dFedBS               -0.0040      0.004     -0.925      0.355      -0.013       0.004
+HalvingWindow         0.0329      0.010      3.199      0.001       0.013       0.053
+PostETF              -0.0031      0.016     -0.194      0.846      -0.035       0.029
+FedRate_x_PostETF     0.1242      0.171      0.726      0.468      -0.212       0.460
+FedBS_x_PostETF      -0.0253      0.034     -0.736      0.462      -0.093       0.042
+Halving_x_PostETF    -0.0322      0.021     -1.530      0.127      -0.074       0.009
+R_SP500               0.3539      0.248      1.429      0.154      -0.133       0.840
+R_BTC_lag1            0.0406      0.041      0.993      0.321      -0.040       0.121
+dVIX                 -0.0041      0.002     -2.298      0.022      -0.008      -0.001
+y_hat_sq              0.6879      3.561      0.193      0.847      -6.305       7.681
+y_hat_cub           -55.4950     52.165     -1.064      0.288    -157.948      46.958
+==============================================================================
+Omnibus:                       42.542   Durbin-Watson:                   2.021
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              164.023
+Skew:                          -0.150   Prob(JB):                     2.41e-36
+Kurtosis:                       5.548   Cond. No.                     5.06e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 5.06e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

@@ -1,0 +1,6 @@
+Jarque-Bera Test
+JB stat: 166.0731
+p-value: 0.0000
+Skewness: -0.1618
+Excess kurtosis: 5.5613
+REJECT normality
