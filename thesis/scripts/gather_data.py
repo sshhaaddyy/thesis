@@ -45,7 +45,7 @@ def download_yf(ticker: str, start: str) -> pd.Series:
     if df.empty:
         raise ValueError(f"No data returned for {ticker}")
     # Resample OHLCV to W-FRI (take last close of each week)
-    weekly = df["Close"].resample("W-FRI").last()
+    weekly = df["Close"].squeeze().resample("W-FRI").last()
     return weekly.dropna()
 
 
@@ -160,8 +160,8 @@ def main():
     df = df.dropna()
 
     # Summary
-    print("\n── Dataset summary ──────────────────────────────────────")
-    print(f"  Date range : {df.index.min().date()}  →  {df.index.max().date()}")
+    print("\n-- Dataset summary ------------------------------------------")
+    print(f"  Date range : {df.index.min().date()} -> {df.index.max().date()}")
     print(f"  Rows       : {len(df)}")
     print(f"  Columns    : {list(df.columns)}")
     nan_counts = df.isna().sum()
@@ -170,12 +170,12 @@ def main():
         print(nan_counts[nan_counts > 0].to_string())
     else:
         print("  NaNs       : none")
-    print("─────────────────────────────────────────────────────────\n")
+    print("-------------------------------------------------------------\n")
 
     # Save
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     df.to_excel(OUTPUT_FILE, engine="openpyxl", index=True)
-    print(f"Saved → {os.path.abspath(OUTPUT_FILE)}  {df.shape}")
+    print(f"Saved -> {os.path.abspath(OUTPUT_FILE)}  {df.shape}")
 
 
 if __name__ == "__main__":

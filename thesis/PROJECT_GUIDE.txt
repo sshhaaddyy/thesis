@@ -1,0 +1,605 @@
+================================================================================
+PROJECT GUIDE — Bitcoin Macro Sensitivity & Halving Effects
+Thesis Supervisor Handoff Document
+================================================================================
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+
+Thesis Title:
+  "Does Institutional Adoption Change Bitcoin's Sensitivity to Macroeconomic
+   Factors? Evidence from the Spot ETF Approval"
+
+Research Question:
+  Did the SEC approval of the spot Bitcoin ETF (January 10, 2024) structurally
+  change (a) Bitcoin's sensitivity to macroeconomic variables and (b) the
+  market impact of Bitcoin halving cycles?
+
+Two Hypotheses:
+
+  H1 (Macro Sensitivity):
+    Post-ETF approval, Bitcoin's sensitivity to macroeconomic factors
+    (Federal Funds Rate changes, Fed Balance Sheet) increased significantly,
+    reflecting deeper integration with traditional financial markets.
+
+  H2 (Halving Effect):
+    Post-ETF approval, the positive price effect historically associated with
+    Bitcoin halving cycles diminished, as institutionalized markets price in
+    supply shocks more efficiently.
+
+Sample:
+  July 2014 – March 2026
+  598 weekly observations
+  Breakpoint: January 10, 2024 (SEC approval of first spot Bitcoin ETF)
+
+================================================================================
+2. DIRECTORY MAP
+================================================================================
+
+thesis/
+|
++-- PROJECT_GUIDE.txt              -- this file; read first
+|
++-- data/
+|   +-- thesis_dataset.xlsx        -- 598x11 dataset, ready for regression;
+|                                     pre-saved so gather_data.py is optional
+|
++-- scripts/                       -- one script per analytical task;
+|   |                                 each runs independently from repo root
+|   +-- gather_data.py             -- downloads raw data via Yahoo Finance and
+|   |                                 FRED API; FRED API key already embedded;
+|   |                                 re-running is optional (data pre-saved)
+|   +-- run_descriptive_stats.py   -- summary statistics for all variables
+|   +-- run_diagnostics.py         -- ADF, VIF, Breusch-Pagan, Durbin-Watson,
+|   |                                 Jarque-Bera tests
+|   +-- run_model1.py              -- primary OLS model (full sample, HAC SEs)
+|   +-- run_model2.py              -- robustness: pre/post-ETF subsamples
+|   +-- run_chow_test.py           -- structural break test at ETF breakpoint
+|   +-- run_reset_test.py          -- Ramsey RESET functional-form test
+|   +-- run_plots.py               -- generates 4 figures for thesis appendix
+|   +-- run_monthly_robustness.py  -- Model 1 spec resampled to monthly freq
+|
++-- results/                       -- all outputs written here automatically;
+    |                                 NEVER edit these files by hand
+    +-- descriptive_stats.csv      -- summary statistics table
+    +-- adf_results.csv            -- ADF stationarity test results
+    +-- vif_results.csv            -- Variance Inflation Factors
+    +-- bp_test.txt                -- Breusch-Pagan heteroskedasticity test
+    +-- dw_test.txt                -- Durbin-Watson autocorrelation test
+    +-- jb_test.txt                -- Jarque-Bera normality test on residuals
+    +-- model1_results.txt         -- primary model full regression output
+    +-- model2_results.txt         -- pre-ETF and post-ETF subsample outputs
+    +-- chow_test.txt              -- Chow structural break test results
+    +-- reset_test.txt             -- RESET misspecification test results
+    +-- model1_monthly_robustness.txt  -- monthly-frequency robustness output
+    +-- plots/
+        +-- plot1_btc_returns.png      -- BTC log returns with period shading
+        +-- plot2_rolling_corr.png     -- rolling 52-week BTC vs S&P 500 corr
+        +-- plot3_residuals.png        -- Model 1 residuals + distribution
+        +-- plot4_dummies_overlay.png  -- HalvingWindow & PostETF on BTC returns
+
+================================================================================
+3. HOW TO REPRODUCE THE FULL ANALYSIS
+================================================================================
+
+Prerequisites — install Python packages (one-time):
+
+  pip install yfinance fredapi statsmodels openpyxl scipy matplotlib
+
+Run scripts in the following order from the repository root:
+
+  Step 1 (optional — data already saved):
+    python thesis/scripts/gather_data.py
+    # Downloads BTC-USD, ^GSPC, ^VIX from Yahoo Finance and FEDFUNDS,
+    # WALCL series from FRED. FRED API key is already embedded in the script.
+    # Skip this step if thesis/data/thesis_dataset.xlsx already exists.
+
+  Step 2:
+    python thesis/scripts/run_descriptive_stats.py
+    # Writes: results/descriptive_stats.csv
+
+  Step 3:
+    python thesis/scripts/run_diagnostics.py
+    # Writes: results/adf_results.csv, vif_results.csv,
+    #         bp_test.txt, dw_test.txt, jb_test.txt
+
+  Step 4:
+    python thesis/scripts/run_model1.py
+    # Writes: results/model1_results.txt
+
+  Step 5:
+    python thesis/scripts/run_model2.py
+    # Writes: results/model2_results.txt
+
+  Step 6:
+    python thesis/scripts/run_chow_test.py
+    # Writes: results/chow_test.txt
+
+  Step 7:
+    python thesis/scripts/run_reset_test.py
+    # Writes: results/reset_test.txt
+
+  Step 8:
+    python thesis/scripts/run_plots.py
+    # Writes: results/plots/plot1_btc_returns.png
+    #         results/plots/plot2_rolling_corr.png
+    #         results/plots/plot3_residuals.png
+    #         results/plots/plot4_dummies_overlay.png
+
+  Step 9:
+    python thesis/scripts/run_monthly_robustness.py
+    # Writes: results/model1_monthly_robustness.txt
+
+All scripts read from thesis/data/thesis_dataset.xlsx and write to
+thesis/results/. No other configuration is needed.
+
+================================================================================
+4. DATA & VARIABLES
+================================================================================
+
+Dataset file: thesis/data/thesis_dataset.xlsx
+Dimensions:   598 rows x 11 columns
+Frequency:    Weekly (Friday close prices)
+Period:       July 11, 2014 – March 14, 2026
+
+Variable Definitions:
++-----------------+------------------+-----------------------------+-----------+
+| Column Name     | Source           | Transformation              | Role      |
++-----------------+------------------+-----------------------------+-----------+
+| Date            | —                | Friday dates                | Index     |
+| R_BTC           | Yahoo: BTC-USD   | log(P_t / P_{t-1})          | Dependent |
+| R_SP500         | Yahoo: ^GSPC     | log(P_t / P_{t-1})          | Control   |
+| VIX             | Yahoo: ^VIX      | Level (weekly close)        | Control   |
+| FedRate         | FRED: FEDFUNDS   | Level (monthly, ffill)      | Macro     |
+| dFedRate        | FRED: FEDFUNDS   | First difference of FedRate | Macro     |
+| FedBS           | FRED: WALCL      | log(WALCL_t / WALCL_{t-1}) | Macro     |
+| HalvingWindow   | Hardcoded dates  | Binary dummy (see below)    | Crypto    |
+| PostETF         | Hardcoded date   | Binary dummy (see below)    | Structure |
+| FedRate_PostETF | Interaction      | dFedRate * PostETF          | H1 test   |
+| FedBS_PostETF   | Interaction      | FedBS * PostETF             | H1 test   |
+| Halving_PostETF | Interaction      | HalvingWindow * PostETF     | H2 test   |
++-----------------+------------------+-----------------------------+-----------+
+
+Key Date Definitions (hardcoded in gather_data.py):
+
+  Bitcoin Halving Dates:
+    2016-07-09  (second halving, block reward 25 -> 12.5 BTC)
+    2020-05-11  (third halving,  block reward 12.5 -> 6.25 BTC)
+    2024-04-19  (fourth halving, block reward 6.25 -> 3.125 BTC)
+
+  HalvingWindow = 1 if the observation falls within 18 months AFTER any of
+  the three halving dates above; 0 otherwise. This captures the documented
+  post-halving supply-shock absorption period.
+
+  ETF Breakpoint:
+    2024-01-10  (SEC approved first spot Bitcoin ETF products)
+
+  PostETF = 1 if Date >= 2024-01-10; 0 otherwise.
+  This creates 484 pre-ETF observations and 114 post-ETF observations.
+
+Note on FedRate: The Federal Funds Rate is reported monthly by FRED. It is
+forward-filled to weekly frequency. The level (FedRate) is used only to
+construct dFedRate (the weekly change); the change variable is near-zero in
+unchanged weeks and equals the full month-end adjustment when the Fed moves.
+
+================================================================================
+5. MODEL SPECIFICATIONS
+================================================================================
+
+------------------------------------------------------------
+MODEL 1 — Primary: Full-Sample OLS with Interaction Terms
+------------------------------------------------------------
+
+Equation:
+  R_BTC(t) = alpha
+             + beta_1 * R_SP500(t)
+             + beta_2 * VIX(t)
+             + beta_3 * dFedRate(t)
+             + beta_4 * FedBS(t)
+             + beta_5 * HalvingWindow(t)
+             + beta_6 * PostETF(t)
+             + beta_7 * [dFedRate(t) * PostETF(t)]
+             + beta_8 * [FedBS(t) * PostETF(t)]
+             + beta_9 * [HalvingWindow(t) * PostETF(t)]
+             + epsilon(t)
+
+Standard errors: HAC (Newey-West), maxlags=10
+Observations:   598 (full sample)
+
+Why HAC standard errors:
+  The Breusch-Pagan test on OLS residuals yielded LM=35.59, p<0.001,
+  confirming heteroskedasticity. HAC SEs are robust to both heteroskedasticity
+  and autocorrelation, which is standard practice for financial time series.
+  Durbin-Watson=2.02 indicates no first-order autocorrelation, but the HAC
+  correction remains appropriate given BP results and the nature of the data.
+
+Hypothesis mapping:
+  H1 tested by: beta_7 (dFedRate*PostETF) and beta_8 (FedBS*PostETF)
+    If either is significant and positive, macro sensitivity increased post-ETF.
+  H2 tested by: beta_9 (HalvingWindow*PostETF)
+    Total pre-ETF halving effect:  beta_5
+    Total post-ETF halving effect: beta_5 + beta_9
+    If beta_9 < 0 and significant, halving effect diminished post-ETF.
+
+------------------------------------------------------------
+MODEL 2 — Robustness: Pre/Post-ETF Subsample Regressions
+------------------------------------------------------------
+
+The base specification (without interaction terms) is estimated separately on:
+  - Pre-ETF subsample:  Dates before 2024-01-10  (n=484 observations)
+  - Post-ETF subsample: Dates from  2024-01-10   (n=114 observations)
+
+Equation for each subsample:
+  R_BTC(t) = alpha
+             + beta_1 * R_SP500(t)
+             + beta_2 * VIX(t)
+             + beta_3 * dFedRate(t)
+             + beta_4 * FedBS(t)
+             + beta_5 * HalvingWindow(t)
+             + epsilon(t)
+
+Standard errors: HAC (Newey-West), maxlags=10
+
+Purpose: Provides a direct comparison of coefficient magnitudes across periods
+without relying solely on interaction significance. Complements Model 1.
+
+------------------------------------------------------------
+MONTHLY ROBUSTNESS — Model 1 Spec at Monthly Frequency
+------------------------------------------------------------
+
+The identical Model 1 interaction specification is re-estimated after
+aggregating weekly returns to monthly frequency (last Friday of each month).
+
+  Observations: 137 monthly observations
+  Standard errors: HAC (Newey-West), maxlags=3 (appropriate for monthly data)
+
+Purpose: Weekly Fed balance sheet changes are noisy. Monthly aggregation
+reduces measurement noise and tests whether effects visible at lower frequency
+support or contradict weekly findings.
+
+================================================================================
+6. RESULTS — KEY NUMBERS
+================================================================================
+
+All result files are in thesis/results/. Numbers below match those files exactly.
+
+------------------------------------------------------------
+DESCRIPTIVE STATISTICS  (-> results/descriptive_stats.csv)
+------------------------------------------------------------
+
+Key highlights:
+
+  R_BTC:
+    Mean:              0.0086   (weekly avg return ~0.86%)
+    Std Dev:           0.0917
+    Min:              -0.4647   (crash weeks)
+    Excess Kurtosis:  +3.10     (fat tails — leptokurtic distribution)
+    Interpretation: BTC returns are approximately symmetric but with
+    significantly fatter tails than a normal distribution. This is consistent
+    with financial return literature and justifies use of HAC SEs.
+
+  R_SP500:
+    Mean: 0.0025, Std: 0.0228   (much lower volatility than BTC)
+
+  VIX:
+    Mean: 18.48, range [9.14, 82.69]  (VIX spike during COVID-19 in 2020)
+
+  dFedRate:
+    Mean: 0.0128   (average weekly Fed rate change, dominated by 2022-23 hikes)
+
+------------------------------------------------------------
+MODEL 1 RESULTS  (-> results/model1_results.txt)
+------------------------------------------------------------
+
+Full-sample OLS, n=598, HAC SEs (maxlags=10)
+R-squared: 0.073  (Adj. R²: 0.058)
+
+Coefficient estimates:
+
+  Variable              Coef      Std Err    t-stat    p-value   Significant?
+  --------------------  --------  ---------  --------  --------  ------------
+  const                 0.0063    0.0034      1.87      0.062     marginal
+  R_SP500               0.5948    0.1283      4.63      <0.001    YES
+  VIX                  -0.0009    0.0006     -1.53      0.127     no
+  dFedRate             -0.1601    0.0664     -2.41      0.016     YES *
+  FedBS                 0.1459    0.2310      0.63      0.528     no
+  HalvingWindow         0.0300    0.0111      2.70      0.007     YES **
+  PostETF              -0.0134    0.0122     -1.10      0.272     no
+  dFedRate x PostETF    0.0895    0.1261      0.71      0.479     no
+  FedBS x PostETF      -0.0247    0.0183     -1.36      0.174     no (H1 fail)
+  HalvingWindow x PostETF -0.0284 0.0174     -1.63      0.104     no (H2 partial)
+
+Key interpretations:
+
+  dFedRate=-0.1601 (p=0.016):
+    A 1 percentage point increase in the Federal Funds Rate is associated with
+    a 16 basis point decline in BTC weekly returns. Statistically significant
+    pre-ETF sensitivity to monetary policy tightening.
+
+  HalvingWindow=+0.0300 (p=0.007):
+    During the 18-month post-halving window (pre-ETF), BTC earns an additional
+    3.00 percentage points per week on average. Highly significant.
+
+  dFedRate x PostETF=+0.0895 (p=0.479):
+    Post-ETF change in Fed rate sensitivity is NOT significant. H1 not supported.
+    Total post-ETF Fed rate effect: -0.1601 + 0.0895 = -0.0706 (attenuated,
+    but the change is statistically indistinguishable from zero).
+
+  FedBS x PostETF=-0.0247 (p=0.174):
+    Post-ETF change in balance sheet sensitivity is NOT significant.
+
+  HalvingWindow x PostETF=-0.0284 (p=0.104):
+    Total post-ETF halving effect: 0.0300 + (-0.0284) = +0.0016 (near zero).
+    The interaction is marginally insignificant. Directional evidence of
+    diminished halving effect post-ETF, but Chow test (below) does not confirm
+    a structural break. H2 receives partial support.
+
+  R²=0.073: Model explains 7.3% of weekly BTC return variance. This is typical
+  for high-frequency financial return models; macro variables have low explanatory
+  power at weekly frequency due to noise.
+
+------------------------------------------------------------
+MODEL 2 RESULTS  (-> results/model2_results.txt)
+------------------------------------------------------------
+
+Pre-ETF Subsample (n=484, dates before 2024-01-10), HAC SEs (maxlags=10):
+  R²: 0.073
+
+  dFedRate:       -0.1613  (p=0.015)  — significant *
+  FedBS:          +0.1554  (p=0.500)  — not significant
+  HalvingWindow:  +0.0301  (p=0.007)  — significant **
+  R_SP500:        +0.5810  (p<0.001)  — significant ***
+
+Post-ETF Subsample (n=114, dates from 2024-01-10), HAC SEs (maxlags=10):
+  R²: 0.078
+
+  dFedRate:       -0.0629  (p=0.535)  — NOT significant
+  FedBS:          -0.0057  (p=0.944)  — NOT significant
+  HalvingWindow:  +0.0018  (p=0.889)  — NOT significant
+  R_SP500:        +0.6948  (p<0.001)  — significant ***
+
+Interpretation:
+  The pre-ETF coefficients on macro variables are large and significant; the
+  post-ETF coefficients are small and insignificant. However, R² is nearly
+  identical (0.073 vs 0.078), suggesting the explanatory power of the full
+  model is not improved by the ETF breakpoint. The Chow test (below) formally
+  tests whether these coefficient changes constitute a structural break.
+  Note: 114 post-ETF observations provide low statistical power; the insignificant
+  results in the post-ETF subsample may partly reflect insufficient sample size
+  rather than a true absence of effects.
+
+------------------------------------------------------------
+CHOW TEST  (-> results/chow_test.txt)
+------------------------------------------------------------
+
+Tests whether coefficients change significantly at the proposed breakpoint.
+
+  Breakpoint: 2024-01-10 (ETF approval date)
+    F-statistic: 0.951
+    p-value:     0.467
+    Conclusion:  NO structural break detected at the 5% significance level.
+
+  Breakpoint: 2023-10-01 (alternative, pre-ETF anticipation period)
+    F-statistic: 1.118
+    p-value:     0.350
+    Conclusion:  NO structural break detected.
+
+  Interpretation: The absence of a Chow-detected structural break is consistent
+  with a gradual regime transition rather than an abrupt change. The ETF approval
+  may have had a continuous, incremental effect on Bitcoin's market dynamics rather
+  than an instantaneous structural shift.
+
+------------------------------------------------------------
+RESET TEST  (-> results/reset_test.txt)
+------------------------------------------------------------
+
+Ramsey RESET test for functional-form misspecification (Model 1):
+  F-statistic: 0.754
+  p-value:     0.471
+  Conclusion:  No evidence of functional-form misspecification.
+  The linear OLS specification is appropriate; no polynomial or interaction
+  terms are omitted in a way that biases the model.
+
+------------------------------------------------------------
+DIAGNOSTICS  (-> results/adf_results.csv, vif_results.csv,
+               bp_test.txt, dw_test.txt, jb_test.txt)
+------------------------------------------------------------
+
+ADF Stationarity Tests (-> adf_results.csv):
+  R_BTC:       ADF stat -23.4, p<0.001  — stationary (expected for log returns)
+  R_SP500:     ADF stat -22.7, p<0.001  — stationary
+  VIX:         ADF stat  -4.1, p<0.001  — stationary
+  dFedRate:    ADF stat -12.8, p<0.001  — stationary
+  FedBS:       ADF stat -22.3, p<0.001  — stationary
+  HalvingWindow: Not tested (binary dummy; ADF undefined for step functions)
+  PostETF:       Not tested (binary dummy; same reason)
+  Note: All continuous regressors are stationary, satisfying the standard OLS
+  requirement. Binary dummies do not require stationarity testing.
+
+Variance Inflation Factors (-> vif_results.csv):
+  R_SP500:              VIF ~1.10  — no multicollinearity
+  VIX:                  VIF ~1.14  — no multicollinearity
+  dFedRate:             VIF ~1.08  — no multicollinearity
+  FedBS:                VIF ~1.05  — no multicollinearity
+  HalvingWindow:        VIF ~1.40  — acceptable
+  PostETF:              VIF ~2.21  — acceptable
+  dFedRate x PostETF:   VIF ~1.22  — acceptable
+  FedBS x PostETF:      VIF ~1.15  — acceptable
+  HalvingWindow x PostETF: VIF ~3.57 — highest, but below threshold of 5-10
+  Conclusion: No severe multicollinearity. The elevated VIF on the
+  HalvingWindow*PostETF interaction reflects the temporal overlap between
+  the April 2024 halving and the post-ETF period (both dummy=1 simultaneously),
+  which is an inherent feature of the data, not a modeling error.
+
+Breusch-Pagan Test (-> bp_test.txt):
+  LM statistic: 35.59
+  p-value:      <0.001
+  Conclusion:   Heteroskedasticity is present.
+  Action taken: HAC (Newey-West) standard errors used in all models.
+
+Durbin-Watson Test (-> dw_test.txt):
+  DW statistic: 2.02
+  Conclusion:   No first-order autocorrelation in residuals.
+  (DW=2.0 is the ideal value; values between 1.5 and 2.5 are acceptable.)
+
+Jarque-Bera Normality Test (-> jb_test.txt):
+  JB statistic: large (consistent with kurtosis=3.10 excess)
+  p-value:      <0.001
+  Conclusion:   Residuals are non-normally distributed (fat tails).
+  This is expected and unproblematic: OLS is consistent by the Central Limit
+  Theorem regardless of residual normality in large samples (n=598 qualifies).
+  Inference with HAC SEs is valid asymptotically.
+
+------------------------------------------------------------
+MONTHLY ROBUSTNESS  (-> results/model1_monthly_robustness.txt)
+------------------------------------------------------------
+
+Model 1 interaction spec, monthly frequency, n=137, HAC SEs (maxlags=3):
+R-squared: 0.185  (higher than weekly; monthly aggregation reduces noise)
+
+Key coefficients:
+  HalvingWindow:         +0.1345  (p=0.016)  — significant *
+  HalvingWindow x PostETF: -0.1528 (p=0.068) — marginal (near-significant)
+  FedBS x PostETF:       -0.0853  (p=0.093)  — marginal (near-significant)
+  dFedRate x PostETF:     direction consistent with weekly results
+
+Interpretation:
+  Monthly results show stronger and cleaner effects. The halving window remains
+  significant. The FedBS*PostETF interaction (H1 test for balance sheet) reaches
+  p=0.093 — suggestive of a post-ETF change in balance sheet sensitivity that
+  is not detectable at weekly frequency due to noise. This provides directional
+  (but not conclusive) support for H1 at monthly frequency.
+
+================================================================================
+7. HYPOTHESIS CONCLUSIONS
+================================================================================
+
+H1 — Macro Sensitivity Post-ETF:
+  Assessment: NOT SUPPORTED at the 5% significance level (weekly frequency).
+              DIRECTIONAL EVIDENCE at monthly frequency.
+
+  Evidence:
+  - Weekly: dFedRate*PostETF p=0.479, FedBS*PostETF p=0.174 — both insignificant.
+  - Monthly: FedBS*PostETF p=0.093 — marginally significant.
+  - Model 2 post-ETF subsample: macro coefficients smaller and insignificant,
+    but n=114 provides limited statistical power.
+  - Chow test: no structural break at ETF date (p=0.467).
+
+  Interpretation for thesis:
+  H1 cannot be accepted based on the primary weekly specification. The
+  hypothesized increase in macro sensitivity is not statistically detectable at
+  weekly frequency. Monthly analysis provides suggestive but inconclusive
+  evidence. A longer post-ETF window (currently only ~27 monthly observations)
+  would be needed to draw firm conclusions.
+
+H2 — Halving Effect Post-ETF:
+  Assessment: PARTIAL SUPPORT — directional evidence of diminished halving
+              effect, but no abrupt structural break confirmed by Chow test.
+
+  Evidence:
+  - Pre-ETF halving effect: +0.0300 per week (p=0.007) — highly significant.
+  - Post-ETF halving effect: +0.0300 + (-0.0284) = +0.0016 per week (near zero).
+  - Interaction term HalvingWindow*PostETF: p=0.104 — marginally insignificant.
+  - Monthly: HalvingWindow*PostETF p=0.068 — approaching significance.
+  - Chow test: no abrupt break (p=0.467).
+
+  Interpretation for thesis:
+  The halving effect was economically and statistically significant in the
+  pre-ETF era. Post-ETF, the total halving effect collapses to near zero
+  (+0.0016/week). This is consistent with H2's prediction of reduced halving
+  impact. However, the Chow test does not validate a discrete structural break,
+  suggesting the transition was gradual rather than abrupt. H2 receives partial
+  support: the direction and magnitude of change align with the hypothesis, but
+  statistical confidence is limited at the 5% threshold.
+
+  The temporal overlap of the April 2024 halving with the post-ETF era creates
+  an inherent identification challenge: the fourth halving occurred in a period
+  that is simultaneously "post-ETF," making it difficult to separate the two
+  effects. This is acknowledged as a limitation.
+
+================================================================================
+8. PLOTS (-> results/plots/)
+================================================================================
+
+plot1_btc_returns.png
+  Content:  BTC weekly log returns over the full sample (Jul 2014 – Mar 2026)
+  Features: PostETF period shaded in a different color; vertical dashed lines
+            at each halving date (2016-07-09, 2020-05-11, 2024-04-19)
+  Use in thesis: Figure 1 — illustrates volatility clustering, halving timing,
+            and the ETF breakpoint relative to the time series.
+
+plot2_rolling_corr.png
+  Content:  52-week rolling correlation between BTC log returns and S&P 500
+            log returns
+  Features: Horizontal reference line at zero; PostETF shading
+  Use in thesis: Figure 2 — shows evolution of BTC-equity co-movement over time.
+            Relevant context: higher post-ETF correlation would support narrative
+            of BTC institutionalization.
+
+plot3_residuals.png
+  Content:  Two-panel plot:
+            Left:  Model 1 OLS residuals plotted over time
+            Right: Histogram of residuals with normal distribution overlay
+  Use in thesis: Figure 3 (appendix) — diagnostic figure; illustrates fat tails
+            (excess kurtosis=3.10), confirms non-normality visible in JB test.
+
+plot4_dummies_overlay.png
+  Content:  HalvingWindow binary indicator and PostETF binary indicator
+            overlaid on BTC weekly log returns
+  Use in thesis: Figure 4 (appendix) — visualizes which periods the two key
+            dummy variables cover; useful for explaining the data construction
+            to readers unfamiliar with Bitcoin halving cycles.
+
+================================================================================
+9. KNOWN LIMITATIONS
+================================================================================
+
+1. Short post-ETF window (n=114 weekly, ~27 monthly observations):
+   The ETF was approved in January 2024. As of March 2026, only ~27 months
+   of post-ETF data exist. This severely limits statistical power for the
+   post-ETF tests. Many of the insignificant post-ETF results may reflect
+   insufficient data rather than true absence of effects. The post-ETF window
+   will continue to grow, and replication with a longer sample is recommended.
+
+2. Halving-ETF collinearity (VIF=3.57 on HalvingWindow*PostETF):
+   The April 2024 Bitcoin halving occurred just three months after the ETF
+   approval, meaning the fourth halving falls entirely within the PostETF=1
+   period. This causes mechanical correlation between HalvingWindow and PostETF
+   in the post-ETF era, making it statistically difficult to isolate the ETF's
+   independent effect on the halving coefficient. This is an inherent feature
+   of the historical timeline, not a model design flaw.
+
+3. Weekly Fed balance sheet noise:
+   The Federal Reserve balance sheet (WALCL) is reported weekly, but large
+   structural changes (QE programs, reserve adjustments) are lumpy and do not
+   translate smoothly to weekly return variation. Monthly aggregation (see
+   robustness check) yields cleaner signals, suggesting the weekly FedBS
+   variable has high measurement noise relative to its economic signal.
+
+4. Non-normal residuals throughout (JB p<0.001):
+   All models produce non-normally distributed residuals. OLS coefficient
+   estimates remain unbiased and consistent by the Gauss-Markov theorem;
+   asymptotic inference via HAC SEs is valid by CLT with n=598. However,
+   finite-sample inference could be imprecise for the post-ETF subsample (n=114).
+
+5. No control for Bitcoin-specific structural factors:
+   The models do not include variables for Bitcoin network hash rate, miner
+   revenue, on-chain transaction volume, or stablecoin market cap. These may
+   be confounders, particularly around halving dates when miner capitulation
+   events can cause independent price shocks.
+
+6. OLS assumes linearity:
+   The RESET test confirms no functional-form misspecification (p=0.471), but
+   the relationship between macro variables and BTC returns may involve threshold
+   or regime-switching dynamics not captured by linear interaction terms. A
+   Markov-switching or threshold regression model would be an alternative
+   specification for future work.
+
+================================================================================
+END OF DOCUMENT
+================================================================================
+Questions? Contact: Roman Telyakov
+All scripts are self-contained and run without external dependencies beyond
+the Python packages listed in Section 3.
+================================================================================
