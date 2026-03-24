@@ -7,8 +7,8 @@ HAC Newey-West SE, maxlags=10
 Dep. Variable:                  R_BTC   R-squared:                       0.073
 Model:                            OLS   Adj. R-squared:                  0.057
 Method:                 Least Squares   F-statistic:                     3.674
-Date:                Fri, 20 Mar 2026   Prob (F-statistic):           8.84e-05
-Time:                        10:21:56   Log-Likelihood:                 603.66
+Date:                Tue, 24 Mar 2026   Prob (F-statistic):           8.84e-05
+Time:                        11:04:08   Log-Likelihood:                 603.66
 No. Observations:                 598   AIC:                            -1185.
 Df Residuals:                     587   BIC:                            -1137.
 Df Model:                          10                                         

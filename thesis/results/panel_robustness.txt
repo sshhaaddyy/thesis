@@ -1,0 +1,79 @@
+PANEL ROBUSTNESS — Model 1 on 5 Cryptocurrencies with Fixed Effects
+Cryptos: BTC, ETH, XRP, LTC, BNB (BTC = reference entity)
+Total observations: 2496
+Unbalanced panel (each crypto enters when Yahoo Finance data begins)
+HAC Newey-West SE, maxlags=10
+
+Notes:
+  - HalvingWindow uses Bitcoin halving dates for all cryptos
+  - PostETF = Jan 10, 2024 (BTC spot ETF approval) for all cryptos
+  - R_crypto_lag1 = each crypto's own lagged return
+
+--- Per-Crypto Sample ---
+  BTC: 597 obs (2014-10-10 -> 2026-03-13), pre-ETF=483, post-ETF=114
+  ETH: 434 obs (2017-11-24 -> 2026-03-13), pre-ETF=320, post-ETF=114
+  XRP: 434 obs (2017-11-24 -> 2026-03-13), pre-ETF=320, post-ETF=114
+  LTC: 597 obs (2014-10-10 -> 2026-03-13), pre-ETF=483, post-ETF=114
+  BNB: 434 obs (2017-11-24 -> 2026-03-13), pre-ETF=320, post-ETF=114
+
+--- Key Hypothesis Coefficients ---
+
+H1: Increased macro sensitivity post-ETF
+  dFedRate          : coef=-0.0665  p=0.0688  * p<0.10
+  FedRate x PostETF : coef=+0.0101  p=0.8911  n.s.
+  FedBS x PostETF   : coef=-0.0243  p=0.1154  n.s.
+
+H2: Halving effect weakened post-ETF
+  HalvingWindow     : coef=+0.0439  p=0.0000  *** p<0.01
+  Halving x PostETF : coef=-0.0369  p=0.0008  *** p<0.01
+  Total post-ETF halving effect = +0.0069
+
+--- Entity Fixed Effects ---
+  ETH vs BTC: coef=-0.0019  p=0.7600  n.s.
+  XRP vs BTC: coef=-0.0019  p=0.7998  n.s.
+  LTC vs BTC: coef=-0.0042  p=0.4969  n.s.
+  BNB vs BTC: coef=+0.0073  p=0.3477  n.s.
+
+R-squared: 0.0795
+Adj R-squared: 0.0743
+
+--- Full OLS Summary ---
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               R_crypto   R-squared:                       0.080
+Model:                            OLS   Adj. R-squared:                  0.074
+Method:                 Least Squares   F-statistic:                     10.72
+Date:                Tue, 24 Mar 2026   Prob (F-statistic):           4.32e-24
+Time:                        11:04:26   Log-Likelihood:                 1760.5
+No. Observations:                2496   AIC:                            -3491.
+Df Residuals:                    2481   BIC:                            -3404.
+Df Model:                          14                                         
+Covariance Type:                  HAC                                         
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                -0.0047      0.004     -1.053      0.292      -0.013       0.004
+dFedRate             -0.0665      0.037     -1.820      0.069      -0.138       0.005
+dFedBS               -0.0012      0.002     -0.611      0.541      -0.005       0.003
+HalvingWindow         0.0439      0.008      5.378      0.000       0.028       0.060
+PostETF              -0.0019      0.006     -0.285      0.775      -0.015       0.011
+FedRate_x_PostETF     0.0101      0.074      0.137      0.891      -0.135       0.155
+FedBS_x_PostETF      -0.0243      0.015     -1.574      0.115      -0.054       0.006
+Halving_x_PostETF    -0.0369      0.011     -3.343      0.001      -0.059      -0.015
+R_SP500               0.4619      0.143      3.235      0.001       0.182       0.742
+dVIX                 -0.0047      0.001     -4.691      0.000      -0.007      -0.003
+R_crypto_lag1         0.0674      0.031      2.154      0.031       0.006       0.129
+FE_ETH               -0.0019      0.006     -0.306      0.760      -0.014       0.010
+FE_XRP               -0.0019      0.007     -0.254      0.800      -0.017       0.013
+FE_LTC               -0.0042      0.006     -0.679      0.497      -0.016       0.008
+FE_BNB                0.0073      0.008      0.939      0.348      -0.008       0.022
+==============================================================================
+Omnibus:                      561.080   Durbin-Watson:                   2.030
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             6837.236
+Skew:                           0.707   Prob(JB):                         0.00
+Kurtosis:                      10.984   Cond. No.                         230.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 10 lags and without small sample correction

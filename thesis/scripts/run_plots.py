@@ -175,4 +175,96 @@ fig.savefig(out4, dpi=150)
 plt.close(fig)
 print(f"Saved -> {out4}")
 
+# ---------------------------------------------------------------------------
+# Plot 5: Multi-cryptocurrency returns (panel data overview)
+# ---------------------------------------------------------------------------
+CRYPTO_COLORS = {
+    "R_BTC": ("Bitcoin", "steelblue"),
+    "R_ETH": ("Ethereum", "darkorange"),
+    "R_XRP": ("Ripple", "green"),
+    "R_LTC": ("Litecoin", "gray"),
+    "R_BNB": ("BNB", "purple"),
+}
+
+fig, ax = plt.subplots(figsize=(12, 5))
+for col, (name, color) in CRYPTO_COLORS.items():
+    if col in df.columns:
+        ax.plot(df.index, df[col], color=color, linewidth=0.5, alpha=0.7, label=name)
+add_post_etf_shading(ax, df)
+add_halving_vlines(ax)
+ax.axhline(0, color="black", linewidth=0.5)
+ax.set_title("Weekly Log-Returns: 5 Cryptocurrencies (Panel Data)")
+ax.set_xlabel("Date")
+ax.set_ylabel("Log Return")
+ax.legend(fontsize=8, loc="upper left")
+plt.tight_layout()
+out5 = os.path.join(PLOTS_DIR, "plot5_altcoin_returns.png")
+fig.savefig(out5, dpi=150)
+plt.close(fig)
+print(f"Saved -> {out5}")
+
+# ---------------------------------------------------------------------------
+# Plot 6: Coefficient comparison across specifications
+# ---------------------------------------------------------------------------
+# Hardcoded from result files (coef, SE)
+specs = ["BTC Weekly\n(n=598)", "Monthly\n(n=137)", "Panel 5-Crypto\n(n=2496)"]
+
+halving_base = {
+    "coef": [0.0300, 0.1345, 0.0439],
+    "se":   [0.0111, 0.0556, 0.0082],
+    "pval": [0.007,  0.016,  0.000],
+}
+halving_interact = {
+    "coef": [-0.0284, -0.1528, -0.0369],
+    "se":   [0.0174,   0.0837,  0.0110],
+    "pval": [0.104,    0.068,   0.001],
+}
+
+def sig_label(p):
+    if p < 0.01: return "***"
+    if p < 0.05: return "**"
+    if p < 0.10: return "*"
+    return ""
+
+x = np.arange(len(specs))
+width = 0.35
+
+fig, ax = plt.subplots(figsize=(10, 5))
+
+bars1 = ax.bar(x - width/2, halving_base["coef"], width,
+               yerr=[1.96 * s for s in halving_base["se"]],
+               label="HalvingWindow (baseline)", color="steelblue",
+               capsize=4, edgecolor="white", linewidth=0.5)
+
+bars2 = ax.bar(x + width/2, halving_interact["coef"], width,
+               yerr=[1.96 * s for s in halving_interact["se"]],
+               label="Halving × PostETF (interaction)", color="indianred",
+               capsize=4, edgecolor="white", linewidth=0.5)
+
+# Add significance stars
+for i, (bar, p) in enumerate(zip(bars1, halving_base["pval"])):
+    star = sig_label(p)
+    if star:
+        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1.96 * halving_base["se"][i] + 0.003,
+                star, ha="center", va="bottom", fontsize=11, fontweight="bold")
+
+for i, (bar, p) in enumerate(zip(bars2, halving_interact["pval"])):
+    star = sig_label(p)
+    if star:
+        y_pos = bar.get_height() - 1.96 * halving_interact["se"][i] - 0.008
+        ax.text(bar.get_x() + bar.get_width()/2, y_pos,
+                star, ha="center", va="top", fontsize=11, fontweight="bold")
+
+ax.set_xticks(x)
+ax.set_xticklabels(specs, fontsize=10)
+ax.axhline(0, color="black", linewidth=0.8)
+ax.set_ylabel("Coefficient Estimate")
+ax.set_title("Halving Coefficients Across Specifications (±95% CI)")
+ax.legend(fontsize=9, loc="upper right")
+plt.tight_layout()
+out6 = os.path.join(PLOTS_DIR, "plot6_coef_comparison.png")
+fig.savefig(out6, dpi=150)
+plt.close(fig)
+print(f"Saved -> {out6}")
+
 print("\nAll plots saved to thesis/results/plots/")
