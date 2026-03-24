@@ -1,0 +1,57 @@
+MODEL 1 + M2 GROWTH — ROBUSTNESS CHECK
+Sample: 2014-10-03 -> 2025-12-26  (587 obs)
+HAC Newey-West SE, maxlags=10
+
+Added variable: dM2 = log growth rate of M2 money supply (FRED: M2SL)
+
+--- Key Hypothesis Coefficients ---
+
+H1: Increased macro sensitivity post-ETF
+  FedRate x PostETF : coef=+0.0878  p=0.4824  n.s.
+  FedBS x PostETF   : coef=-0.0353  p=0.1550  n.s.
+
+H2: Halving effect weakened post-ETF
+  HalvingWindow     : coef=+0.0293  p=0.0083  *** p<0.01
+  Halving x PostETF : coef=-0.0318  p=0.1127  n.s.
+  Total post-ETF halving effect = -0.0024
+
+M2 growth control:
+  dM2               : coef=+1.1333  p=0.0583  * p<0.10
+
+--- Full OLS Summary ---
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  R_BTC   R-squared:                       0.076
+Model:                            OLS   Adj. R-squared:                  0.058
+Method:                 Least Squares   F-statistic:                     3.710
+Date:                Tue, 24 Mar 2026   Prob (F-statistic):           3.97e-05
+Time:                        11:04:19   Log-Likelihood:                 591.09
+No. Observations:                 587   AIC:                            -1158.
+Df Residuals:                     575   BIC:                            -1106.
+Df Model:                          11                                         
+Covariance Type:                  HAC                                         
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                 0.0001      0.005      0.021      0.983      -0.010       0.010
+dFedRate             -0.1582      0.065     -2.423      0.015      -0.286      -0.030
+dFedBS               -0.0045      0.004     -1.139      0.255      -0.012       0.003
+HalvingWindow         0.0293      0.011      2.639      0.008       0.008       0.051
+PostETF              -0.0012      0.019     -0.064      0.949      -0.038       0.036
+FedRate_x_PostETF     0.0878      0.125      0.702      0.482      -0.157       0.333
+FedBS_x_PostETF      -0.0353      0.025     -1.422      0.155      -0.084       0.013
+Halving_x_PostETF    -0.0318      0.020     -1.586      0.113      -0.071       0.007
+R_SP500               0.3811      0.274      1.392      0.164      -0.156       0.918
+R_BTC_lag1            0.0317      0.042      0.753      0.451      -0.051       0.114
+dVIX                 -0.0029      0.002     -1.500      0.134      -0.007       0.001
+dM2                   1.1333      0.599      1.893      0.058      -0.040       2.307
+==============================================================================
+Omnibus:                       41.504   Durbin-Watson:                   2.015
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              160.301
+Skew:                          -0.140   Prob(JB):                     1.55e-35
+Kurtosis:                       5.545   Cond. No.                         880.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 10 lags and without small sample correction

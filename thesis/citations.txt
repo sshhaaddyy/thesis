@@ -90,6 +90,15 @@ A11. Liu, Y., & Tsyvinski, A. (2021). Risks and returns of cryptocurrency.
      Note: Landmark paper: crypto returns had no exposure to standard macro or
            stock-market factors — the foundational baseline your thesis challenges.
 
+A12. Sarker, P. K., & Wang, L. (2022). Co-movement and Granger causality
+     between Bitcoin and M2, inflation and economic policy uncertainty:
+     Evidence from the U.K. and Japan. Heliyon, 8(10), e11178.
+     DOI: 10.1016/j.heliyon.2022.e11178
+     URL: https://www.sciencedirect.com/science/article/pii/S2405844022024665
+     Note: Directly tests M2-Bitcoin relationship using wavelet coherence and
+           Granger causality on 2010-2020 data. Justifies inclusion of dM2
+           as robustness control in the present study.
+
 ================================================================================
 CLUSTER B — Bitcoin Halving Effects (7 papers)
 ================================================================================
@@ -339,6 +348,13 @@ F4.  Bai, J., & Perron, P. (1998). Estimating and testing linear models with
            methodological context for why you tested alternative breakpoints
            (Oct 2023 vs Jan 2024) alongside the Chow test.
 
+F5.  Wooldridge, J. M. (2010). Econometric Analysis of Cross Section and
+     Panel Data. 2nd ed. Cambridge, MA: MIT Press.
+     URL: https://mitpress.mit.edu/9780262232586/
+     Note: Standard graduate-level reference for panel fixed effects
+           estimation. Cited for the multi-cryptocurrency panel robustness
+           specification with entity dummies.
+
 ================================================================================
 CROSS-CLUSTER OVERLAPS (papers listed in two clusters above)
 ================================================================================
@@ -351,14 +367,14 @@ CROSS-CLUSTER OVERLAPS (papers listed in two clusters above)
 CITATION COUNTS BY CLUSTER
 ================================================================================
 
-  Cluster A — Bitcoin & Macro Factors:      11 papers
+  Cluster A — Bitcoin & Macro Factors:      12 papers (+Sarker & Wang 2022)
   Cluster B — Bitcoin Halving Effects:       7 papers
   Cluster C — Spot ETF & Institutional:      8 papers
   Cluster D — Bitcoin as Asset Class:        7 papers
   Cluster E — Fed Balance Sheet / QE:        3 unique papers
-  Cluster F — Methodology:                   4 unique papers
+  Cluster F — Methodology:                   5 unique papers (+Wooldridge 2010)
   -----------------------------------------------
-  Total unique papers:                      ~40 papers
+  Total unique papers:                      ~42 papers
 
 ================================================================================
 RECOMMENDATIONS & WARNINGS BEFORE SUBMISSION

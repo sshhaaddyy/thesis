@@ -97,9 +97,28 @@ def build_walcl(start: str) -> pd.Series:
     return pct.rename("dFedBS")
 
 
+def build_dm2(start: str) -> pd.Series:
+    """Monthly M2SL → forward-fill to W-FRI → log growth rate."""
+    raw = download_fred("M2SL", start)
+    friday_idx = pd.date_range(start=raw.index.min(), end=raw.index.max(), freq="W-FRI")
+    weekly = raw.reindex(friday_idx, method="ffill")
+    log_growth = np.log(weekly / weekly.shift(1))
+    return log_growth.rename("dM2")
+
+
+def build_r_crypto(ticker: str, start: str) -> pd.Series:
+    """Download weekly Friday log returns for any Yahoo Finance ticker."""
+    prices = download_yf(ticker, start)
+    name = ticker.replace("-USD", "")
+    return np.log(prices / prices.shift(1)).rename(f"R_{name}")
+
+
 # ---------------------------------------------------------------------------
 # 3. Merge
 # ---------------------------------------------------------------------------
+ALTCOIN_TICKERS = ["ETH-USD", "XRP-USD", "LTC-USD", "BNB-USD"]
+
+
 def build_dataset(start: str) -> pd.DataFrame:
     print("Downloading BTC-USD …")
     r_btc = build_r_btc(start)
@@ -111,13 +130,26 @@ def build_dataset(start: str) -> pd.DataFrame:
     dff = build_dff(start)
     print("Downloading FRED WALCL …")
     walcl = build_walcl(start)
+    print("Downloading FRED M2SL …")
+    dm2 = build_dm2(start)
 
+    # Altcoin returns
+    altcoin_series = []
+    for ticker in ALTCOIN_TICKERS:
+        print(f"Downloading {ticker} …")
+        altcoin_series.append(build_r_crypto(ticker, start))
+
+    # Core dataset: inner join on BTC + macro (preserves existing column order)
     df = pd.concat([r_btc, r_sp500, dvix, dff, walcl], axis=1, join="inner")
     df.index.name = "date"
     df = df.sort_index()
 
     # Drop first row — NaN from differencing / log returns
     df = df.iloc[1:]
+
+    # Add M2 and altcoin returns via left join (NaN where data unavailable)
+    extras = pd.concat([dm2] + altcoin_series, axis=1)
+    df = df.join(extras, how="left")
 
     return df
 
@@ -156,8 +188,12 @@ def main():
     df = build_dataset(START)
     df = add_derived(df)
 
-    # Drop remaining NaNs (e.g. from lag)
-    df = df.dropna()
+    # Drop remaining NaNs only in core columns (lag creates one NaN row).
+    # Altcoin and M2 columns may have NaN before their data starts — that is
+    # expected for the unbalanced panel and handled by downstream scripts.
+    CORE_COLS = ["R_BTC", "R_SP500", "dVIX", "dFedRate", "dFedBS", "R_BTC_lag1",
+                 "HalvingWindow", "PostETF"]
+    df = df.dropna(subset=CORE_COLS)
 
     # Summary
     print("\n-- Dataset summary ------------------------------------------")
