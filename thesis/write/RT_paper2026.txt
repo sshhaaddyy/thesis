@@ -1,208 +1,0 @@
-TALLINN UNIVERSITY OF TECHNOLOGY
-School of Business and Governance
-
-
-
-
-
-
-
-
-Roman Teljakov
-Does Institutional Adoption Change Bitcoin’s sensitivity to Macroeconomic Factors? Evidence from the Spot ETF Approval
-Bachelor’s thesis
-Programme International Business Administration, specialisation finance
-
-
-
-
-
-
-
-Supervisor: Pavlo Illiashenko, PhD
-
-
-
-
-
-
-
-
-
-Tallinn 2026
-I hereby declare that I have compiled the thesis independently
-and all works, important standpoints and data by other authors
-have been properly referenced and the same paper
-has not been previously presented for grading.
-
-The document length is ………... words from the introduction to the end of the conclusion.
-
-Roman Teljakov ……………………………
-                      (date)
-
-
-
-TABLE OF CONTENTS
-ABSTRACT /ONLY IN A GRADUATION THESIS/	4
-INTRODUCTION	5
-1. FIRST LEVEL HEADING	6
-1.1. Second level heading	6
-1.1.1. Third level heading	6
-1.1.2. Third level heading	7
-1.2. Second level heading	7
-2. FIRST LEVEL HEADING	8
-2.1. Second level heading	8
-2.2. Second level heading	9
-CONCLUSION	10
-KOKKUVÕTE /ONLY IN ESTONIAN LANGUAGE STUDY PROGRAMME GRADUATION THESIS/	11
-LIST OF REFERENCES	12
-APPENDICES	13
-Appendix 1. Heading	13
-Appendix 2. Heading	14
-Appendix 3. Heading	16
-Appendix 4. Non-exclusive licence /added only in case of a graduation thesis as the last appendix /	17
-
-
-ABSTRACT /ONLY IN A GRADUATION THESIS/
-Text xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxxxxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxx xxxxx.
-
-Text continues xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxx xxxxx.
-
-Text continues xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxx xxxxx. 
-
-Keywords: Xxxxxxx, xxxxxxx, xxxxxxx, xxxxxx
-
-INTRODUCTION
-The global cryptocurrency market has undergone a pivotal transformation in recent years. Bitcoin, the largest cryptocurrency by market capitalisation in the world, has evolved from a niche digital asset into a financial instrument held by institutions and regulated funds. As of 2026, Bitcoin’s capitalisation fluctuates between one and two trillion US dollars, placing it alongside major asset classes in terms of scale. The important moment in this institutional transition happened on January 10 of 2024, when the United States Securities and Exchange Commision (SEC) approved the first spot Bitcoin exchange traded funds (ETFs). This decision opened direct Bitcoin exposure to pension funds, banks, and retail investors through regulated brokerage accounts, which has triggered billions of dollars in institutional inflows within days of approval (Mohamad, 2025; Babalos et al., 2025).
-
-The question of whether Bitcoin and cryptocurrency market as a whole is sensitive to macroeconomic conditions is not new, but lately, it has become more complex. Early studies found that cryptocurrency returns were strongly orthogonal to traditional financial and macroeconomic factors (Liu and Tsyvinski, 2021; Corbet et al., 2018). Later studies revealed a gradual convergence, particularly during and after the COVID-19 pandemic, as institutional investors entered the market and equity-Bitcoin correlations rose (Bouri et al., 2022; Nguyen, 2022). The relationship between Bitcoin and monetary policy has attracted particular attention, studies covering the post pandemic period find that Federal reserve rate decisions exert a statistically significant negative effect on Bitcoin prices (Karau, 2023; Ma et al., 2020), while Federal Reserve balance sheet expansions appear to support cryptocurrency valuations through increase in liquidity (Zhao et al., 2023; Gu et al., 2021). Nevertheless, evidence for the pre-institutional era is mixed and it still remains unclear whether the introduction of regulated spot ETFs represent a structural turning point in Bitcoin’s macro sensitivity or it is simply a continuation of an earlier trend.
-
-In addition to macro sensitivity, Bitcoin’s halving mechanism has traditionally been a standing out price driver. Approximately every four years, the block reward paid to Bitcoin miners is halved, creating a sewn up supply shock. Historical evidence across the 2016, 2020, and 2024 halvings shows positive post-halving returns (Fabus et al., 2024; Lashkaripour, 2024). However, Veloso et al. (2025) compare all four previusl halving cycles directly and that the 2024 event produced much smaller and less statistically significant price effects than prior cycles, raising the question of whether institutional adoption has decreased the impact of halving mechanism in terms of price action. 
-
-This study examines if the approval of spot Bitcoin ETFs in January 2024 constitutes a structural break in Bitcoin’s sensitivity to macroeconomic factors and whether it has altered the explanotary power of the halving cycles for Bitcoin return. The aim is to quantify the change in the association between Bitcoin weekly logarithmic returns and macroeconomic variables across the pre- and post-ETF eras using a regression model with a regime changing dummy variable and sub-sample robustness checks.
-
-Two hypotheses guide the empirical analysis: H1: after institutionalisation through the spot ETF approval in January 2024, macroeconomic variables have a stronger statistical association with weekly Bitcoin returns that in the pre-ETF period. H2: the explanatory power of halving cycle for Bitcoin returs has decreased after the institutionalisation, as measured by the bullish halving window coefficient losing significance or magnitude in the post-ETF period. To test these hypotheses, this study applies ordinary least squares (OLS) regression with heteroskedasticity and autocorrelation consistent (HAC) Newey-West standard errors (SE) to 598 weekly observations starting from July 2014 to March 2026. The primary specification is a full-sample interaction model that includes a PostETF binary dummy variable and three interaction terms. First is dFedRate*PostETF, second is dFedBS*PostETF and lastly HalvingWindow*PostETF to test whether period specific coefficents differ from their pre-ETF baseline values. A Chow structural break test independently validates the ETF breakpoint date. Further conclusions are verified with sub-sample estimation and a monthly robustness replication.
-
-Data are sourced from Yahoo Finance (Bitcoin-USD, S&P 500, VIX) and the Federal Reserve Economic Data (FRED) service (effective federal funds rate, Fed total assets). The sample begins in July 2014, which represents the earliest period for which reliable weekly Bitcoin price data are available and extends to March 2026, the latest observation available at the time of writing.
-The thesis is structured as follows. Chapter 1 reviews the theoretical and empirical literature on Bitcoin as an evolving asset class, its sensitivity to macroeconomic factors, halving effects, and the role of institutional adoption, pointing at the research gap that motivates the hypotheses. Chapter 2 describes the data sources, variable construction, model specification, and the diagnostic tests employed to validate the estimation strategy. Chapter 3 presents and interprets the regression results for the primary and robustness specifications. Chapter 4 discusses the findings in relation to existing literature, acknowledges the limitations of the study, and draws conclusions regarding the structural role of the ETF approval in Bitcoin's macrofinancial integration. 
-1. Theoretical and Empirical Background
-This chapter reviews the existing literature relevant to the researchquestions and develops the theoretical foundation for the two hypotheses. The review is organised into four substantive sections. Section 1.1 traces Bitcoin's evolution as an asset class. Section 1.2 surveys the evidence on Bitcoin's sensitivity to macroeconomic factors. Section 1.3 examines the literature on Bitcoin halving effects. Section 1.4 reviews the institutional adoption literature centred on the spot ETF approval. Section 1.5 synthesises the reviewed evidence and formally states the research gap.
-1.1. Bitcoin as an Evolving Asset Class
-Bitcoin was introduced in 2008 by the pseudonymous author Satoshi Nakamoto as a decentralised peer-to-peer electronic cash system, introducing the new technology called blockchain. The very first genesis block was mined in January 2009. For much of its first decade, Bitcoin functioned primarily as a speculative instrument with a small community of cryptographic enthusiasts and early adopters. The market was isolated from mainstream financial system and the study of Corbet et al. (2018) is great example of this early period, it examines the dynamic relationship between cryptocurrencies and traditional financial assets from 2013 to 2018, authors state that Bitcoin showed relatively low interconnectedness with equities and gold, positioning it as a distinct asset class whose price action is independent of conventional financial markets. In support of previous claims, Liu and Tsyvinski (2021) also demonstrated that Bitcoin returns had no statistically significant exposure to standard macroeconomic or stock-market factors across the period of 2014 to 2020. Their analysis covers a wide range of standard risk factors, including the market return, size, value and momentum premia, finding negligible systematic exposure, concluding that Bitcoin is a independent asset whose returns were primarily explained by its own time-series momentum.
-
-Over the following years, this picture changed considerably. In a complex study of Bouri et al. (2022), using wavelet based decomposition of high order co-movement moments in the time frequency domain, have documented that Bitcoin-S&P500 co-movement was very weak before 2018 and has notably strengthened thereafter. In addition, Nguten (2022), employed a VAR(1)-GARCH(1,1) approach on data through 2022, finding that S&P500 singnificantly influenced Bitcoin returns during the COVID-19 pandemic period, indicating that financial stress activate equity-Bitcoin connection in ways that were absent in more calmer periods before the pandemic. By 2022, the previously celebrated diversification benefits of Bitcoin appeared to erode precisely when investors needed them most (Bakry et al., 2021). Wu (2025), using rolling correlation analysis, has found that Bitcoin-S&P500 and Bitcoin-Nasdaq correlations peaked at approximately 0.87 in 2024 following major institutional adoption, which placed Bitcoin closer to a high-beta equity than a diversifying alternative asset. Marti and Reimat (2025) further report that a one percent rise in the MSCI World index was associated with a 4.8 percent rise in Bitcoin by 2025, providing additional evidence of deep macro integration in the recent years.
-
-The debate over leading cryptocurrency market efficiency is directly relevant to understanding its trajectory. Yi et al. (2023), examine Bitcoin’s price action over an extended sample and find evidence of weak-form efficiency, implying that publicly known information, such as halving dates, whose timing is fixed years in advance, should be progressively priced in ahead of the event as the market matures and informational barriers fall. This efficiency argument provides theoretical foundation for the hypothesis that Bitcoin’s historically distinctive supply shocks might become less informative over time. The literature overall narrative is a transition from an isolated and speculative instrument to an increasingly macro-sensitive financial instrument, and the present study’s hypotheses are formulated in the same context.
-1.2 Bitcoin’s Sensitivity to Macroeconomic Factors
-The baseline evidence from the pre-pandemic period is relatively clear in the context of Bitcoin’s limited macro sensitivity. Lyócsa et al. (2020) study the impact of macroeconomic news, regulations and hacking events on leading cryptocurrency volatility over the period of 2013 to 2019 and find that, while hacking incidents and regulatory decisions singnificantly affect volatility, scheduled US macroeconomic news announcements have no meaningful effect on Bitcoin. In a Federal Reserve Bank of New York staff report, Benigo and Rosa (2023) formally document this “Bitcoin macro disconnect” in the pre-institutional era, which established a baseline against which any post-institutional findings should be compared. Their evidence suggests that until approximately 2020, Bitcoin and macroeconomic variables inhabited largely separate informational universes.
-
-The evidence for the period after 2020 is substantially different. Karau (2023), studying the relationship between monetary policy and Bitcoin in an event study framework around Federal Open Market Committee (FOMC) meetings and finds that asset sensitivity to Federal Reserve policy shocks increased substantially after 2020, with monetary tightening having a significant negative effect on Bitcoin prices. The study represents a key empirical precedent for the first hypothesis of the current study, as it demonstrates that the sensitivity became more obvious over this decade. This conclusion aligns with Ma et al. (2022), who estimate that a one basis point surprise tightening on FOMC days is associated with an approximately minus 0.25 percentage point Bitcoin return, a response much larger than would be expected from a macroeconomically orthogonal asset. Buthelezi (2025), using Markov-switching GARCH methods on the period of 2015 to 2023, confirms that monetary tightening decreases cryptocurrency prices during both high and low volatility periods, reinforcing the conclusion that the interest rate has consistent effect across different market states. The international dimension is examined by Elsayed and Sousa (2022), who apply a time varying parameter to show that G4 central bank policy rates exert spillover effects on Bitcoin, Litecoin, and Ripple, extending the Federal Reserve centric approach to a broader monetary policy context.
-
-The Federal Reserve balance sheet is widely used as a proxy for financial liquidity conditions and is associated with current monetary policy. Zhao et al. (2023), apply time varying parameter VAR to 2017-2023 data, finding that quantitative easing has a sustained positive impact on Bitcoin prices via liquidity channel, and is supporting the view that during QE periods liquidity flows into more riskier asset classes such as cryptocurrency. Gu et al. (2021) strengthen this point with evidence, when the FED announced unlimited QE in March 2020, both Bitcoin and Ethereum reacted positively almost immediately, suggesting that the liquidity injection drove the price and not broader market sentiment. Che at al. (2023) in an IMF study combine both channels and find that tightening policy reduces a common cryptocurrency price factor by about 0.15 STD, which is larger that equities have showed back then. This increasing sensitivity attributes to the growing presence of institutional investors in crypto markets.
-
-Choi and Shin (2022) separate two types of macro shocks and find that Bitcoin reacts differently to each, it tends to rise with inflation driven demand shocks, behaving like an inflation hedge, but falls when financial uncertainty increases, as measured by the VIX. This suggests that the asset acts more like a speculative risk asset than a safe haven when investors get nervous, they sell it. Hernandez et al. (2023) add that policy uncertainty also weighs on Bitcoin in short run, further justifying the inclusion of the VIX as a control variable for regression model. Lin et al. (2025) broaden the picture further, implying that the US dollar exchange rate and Treasury yields also significantly drive Bitcoin returns across different parts of the return distribution. These studies show that by the 2020s, Bitcoin’s macro sensitivity had become wider rather than limited to a single channel.
-
-Despite this growing body of evidence, a notable gap exists. Most existing studies analyse the evolution of macro sensitivity up to approximately 2023 and do not directly test whether the specific institutional event of the January 2024 spot ETF approval constitutes a measurable amplification of these sensitivities. To adress this gap the interaction model approach is chosen in this study, it directly estimates whether post-ETF macro regression coefficients differ statistically from pre-ETF levels.
-1.3 Bitcoin Halving Effects
-Bitcoin's supply schedule is encoded in its protocol: approximately every 210,000 blocks, or roughly four years, the reward paid to miners for validating transactions is halved. This mechanism creates a programmed reduction in the rate of new Bitcoin supply. The halvings occurred on 28 November 2012, 9 July 2016, 11 May 2020, and 19 April 2024, respectively. The supply logic predicts that, holding demand constant, a reduction in the rate of new supply creation should exert upward pressure on prices, applying supply-and-demand theory to a fixed-supply monetary asset.
-
-Empirical evidence on halving effects is supportive of a positive price outcome, at least across the earlier cycles. Fabus et al. (2024) document the post-halving price cycle using technical indicators and regression analysis  across the 2012, 2016, and 2020 halvings, identifying a predictable pattern of price growth in the months after each halving. Liu et al. (2022) have used factor model of cryptocurrency returns, which offers theoretical grounding for the diminishing pattern by showing that as Bitcoin matures, its price movements increasingly reflect systematic risk factors, rather than idiosyncratic events like the halving. 
-
-Two competing interpretations of the halving mechanism are particularly important to the present study. The supply view holds that the halving puts genuine fundamental price pressure via the direct reduction in miner supply entering the market. Alternatively, Liu et al. (2025) show negative cumulative average abnormal returns around halving dates and attribute the price dynamics to attention driven trading behaviour rather than supply fundamentals, suggesting that halvings produce their effects primarily through investor sentiment and media coverage. Under this attention view interpretation, halving effects should fade in a more liquid, institutionally dominated market where large participants can arbitrage away predictable patterns in advance. Subawa et al. (2025) reach a similar conclusion using partial least squares model, finding that halvings affect prices via sentiment and regulatory channels, rather than through the fundamental mechanism. However, combined efficiency lens provides an explanation, Yi et al. (2023) imply that as Bitcoin's market deepens, halvings whose dates are publicly known years in advance are increasingly priced in into the asset's valuation long before, reducing the measurable post halving return response.
-
-The most relevant finding for the present study comes from Veloso et al. (2025), who compare cumulative abnormal returns and volatility across all four halving events. Their analysis shows that the 2024 halving produced substantially smaller and less statistically significant price effects than any of the three prior cycles, consistent with both the market maturation hypothesis and the attention based interpretation. This paper is foundational empirical support for the second hypothesis of the current research.
-
-Despite strong theoretical background, there are little to no studies that have tested whether the arrival of large institutional ETF inflows, beginning in January 2024, directly contributed to the weakening of the halving effect. The timing of the ETF approval and the April 2024 halving creates an identification challenge that standard single event analyses cannot resolve. The present study uses a halving window interaction term with the PostETF dummy to directly assess whether the halving coefficient differs between the pre- and post-ETF institutional periods.
-2. FIRST LEVEL HEADING
-Text xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxxxxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxx xxxxx.
-2.1. Second level heading
-Text xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx.
-
-Figure 1. Xxxxxx
-Source: Family name (2013, 17), author’s calculations/on the basis of data shown in appendix 3 compiled by the author
-Text continues xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxx xxxxx xxxxx xxxxx xxxxx.
-2.2. Second level heading
-Text xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx.
-
-Text continues xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xx
- 
-CONCLUSION
-Text xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxxxxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxx
-
-Text continues xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxx xxxxx xxxxx xxxxx xxxxx.
-KOKKUVÕTE /ONLY IN ESTONIAN LANGUAGE STUDY PROGRAMME GRADUATION THESIS/
-ETTEVÕTTE KONKURENTSIVÕIME ANALÜÜS
-Kati Karu 
-Tekst xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxx xxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx. xxxxx xxxx xxxx xxxxxxxxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxx
-
-Tekst jätkub xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx xxxxx xxxx xxxx xxxxx xxxx xxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxxxxxxxx
-
-LIST OF REFERENCES
-Entry xxx xxxxx xxxx xxxx xxxxx xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxx xxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxx xxx xxxxx xxxxx xxxxxx xx
-
-Next entry xxxxxx xxxxx xxxxx xxxxx xxxxx xxxxxx xxxxx xxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxx xxx xxxxx xxxxx
-
-
-APPENDICES
-Appendix 1. Heading
-Capital letterCapital letterlowercase letterlowercase letterlowercase letterlowercase letterCapital letter123,45123–789Capital letter0,000456…Source: Family name (2013, 17), author’s calculations
-
-Appendix 2. Heading
-Capital letterCapital letterlowercase letterlowercase letterlowercase letterlowercase letterCapital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00
-Appendix 2 continued
-Capital letterCapital letterlowercase letterlowercase letterlowercase letterlowercase letterCapital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Capital letter0,000,000,000,00Source: Family name (2013, 17), author’s calculations
-Appendix 3. Heading
-
-Source: Family name (2013, 17), author’s calculations
-
-Appendix 4. Non-exclusive licence /added only in case of a graduation thesis as the last appendix /
-A non-exclusive licence for reproduction and publication of a graduation thesis1
-I ___________________________________ (author’s name)
-
-
-1. Grant Tallinn University of Technology free licence (non-exclusive licence) for my thesis
-_____________________________________________________________________________
-_____________________________________________________________________________
-_____________________________________________________________________________,
-(title of the graduation thesis)
-
-supervised by__________________________________________________________________,
-(supervisor’s name)
-
-
-1.1	to be reproduced for the purposes of preservation and electronic publication of the graduation thesis, incl. to be entered in the digital collection of the library of Tallinn University of Technology until expiry of the term of copyright;
-
-1.2	to be published via the web of Tallinn University of Technology, incl. to be entered in the digital collection of the library of Tallinn University of Technology until expiry of the term of copyright.
-
-2. I am aware that the author also retains the rights specified in clause 1 of the non-exclusive licence.
-
-3. I confirm that granting the non-exclusive licence does not infringe other persons' intellectual property rights, the rights arising from the Personal Data Protection Act or rights arising from other legislation.
-
-1. 
-
-
-_______________ (date)  
-
-
-1 The non-exclusive licence is not valid during the validity of access restriction indicated in the student's application for restriction on access to the graduation thesis that has been signed by the school's dean, except in case of the university's right to reproduce the thesis for preservation purposes only. If a graduation thesis is based on the joint creative activity of two or more persons and the co-author(s) has/have not granted, by the set deadline, the student defending his/her graduation thesis consent to reproduce and publish the graduation thesis in compliance with clauses 1.1 and 1.2 of the non-exclusive licence, the non-exclusive license shall not be valid for the period
----------------
-
-------------------------------------------------------------
-
-
-
----------------
-
-------------------------------------------------------------
-
-
-
-
-
-
-3
-
-
-17
-
-

@@ -259,7 +259,7 @@ The R-squared values are nearly identical across the two sub-samples (0.073 pre-
 
 The Chow structural break test evaluates whether the regression coefficients differ significantly between the pre-ETF and post-ETF sub-samples under the null hypothesis that all slope parameters are identical across the two periods. The test is conducted at two candidate breakpoint dates.
 
-[Table 3.3 — Chow Structural Break Test Results. Source: results/chow_test.txt]
+The results of the Chow test are presented in Table 2.4.
 
 At the primary breakpoint of 10 January 2024, the Chow F-statistic is 0.951 with a p-value of 0.467, failing to reject the null hypothesis of parameter stability at any conventional significance level. At the alternative breakpoint of 23 October 2023, corresponding to the Grayscale SEC lawsuit resolution and the DTCC disclosure of BlackRock's ETF trust, the F-statistic is 1.118 with a p-value of 0.350, also failing to reject the null.
 
