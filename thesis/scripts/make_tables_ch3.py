@@ -252,3 +252,24 @@ rows.append(['N', str(panel_stats['n']), '', ''])
 
 make_table_png(rows, ['Variable', 'Coefficient', 'Std Err (HAC)', 'p-value'],
                'table_3_6_panel.png', figwidth=9)
+
+
+# ============================================================
+# Table 3.7: Summary of Hypothesis Test Results
+# ============================================================
+summary_cols = ['Hypothesis', 'Specification', 'Key Interaction', 'Coeff.', 'p-value', 'Verdict']
+summary_rows = [
+    ['H1: Macro sensitivity',  'Weekly (BTC)',   'FedRate×PostETF',  '+0.072', '0.488', 'Not supported'],
+    ['',                       '',               'FedBS×PostETF',    '-0.017', '0.179', 'Not supported'],
+    ['',                       'Monthly (BTC)',  'FedRate×PostETF',  '+0.120', '0.545', 'Not supported'],
+    ['',                       '',               'FedBS×PostETF',    '-0.062', '0.093', 'Marginal'],
+    ['',                       'Panel (5 coins)','FedRate×PostETF',  '+0.010', '0.891', 'Not supported'],
+    ['',                       '',               'FedBS×PostETF',    '-0.024', '0.115', 'Not supported'],
+    ['', '', '', '', '', ''],
+    ['H2: Halving diminished', 'Weekly (BTC)',   'Halving×PostETF',  '-0.034', '0.104', 'Directional'],
+    ['',                       'Monthly (BTC)',  'Halving×PostETF',  '-0.073', '0.068', 'Marginal (10%)'],
+    ['',                       'Panel (5 coins)','Halving×PostETF',  '-0.037', '0.001', 'Supported (1%)'],
+    ['',                       'M2 control',     'Halving×PostETF',  '-0.034', '0.107', 'Directional'],
+]
+
+make_table_png(summary_rows, summary_cols, 'table_3_7_summary.png', figwidth=13)
