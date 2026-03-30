@@ -1,0 +1,15 @@
+Table A.8: Variance Inflation Factors
+Variable	VIF
+const	1.89
+dFedRate	1.29
+dFedBS	1.17
+HalvingWindow	1.39
+PostETF	3.05
+FedRate_x_PostETF	1.2
+FedBS_x_PostETF	1.27
+Halving_x_PostETF	3.57
+R_SP500	2.48
+R_BTC_lag1	1.05
+dVIX	2.46
+
+Note: Variance Inflation Factor. VIF > 10 indicates severe multicollinearity.

@@ -1,0 +1,15 @@
+Table 3.7: Summary of Hypothesis Test Results
+Hypothesis	Specification	Key Interaction	Coeff.	p-value	Verdict
+H1: Macro sensitivity	Weekly (BTC)	FedRate x PostETF	+0.0895	0.479	Not supported
+		FedBS x PostETF	-0.0247	0.174	Not supported
+	Monthly (BTC)	FedRate x PostETF	-0.1449	0.410	Not supported
+		FedBS x PostETF	-0.0853	0.093	Marginal*
+	Panel (5 coins)	FedRate x PostETF	+0.0101	0.891	Not supported
+		FedBS x PostETF	-0.0243	0.115	Not supported
+					
+H2: Halving diminished	Weekly (BTC)	Halving x PostETF	-0.0284	0.104	Directional
+	Monthly (BTC)	Halving x PostETF	-0.1528	0.068	Marginal*
+	Panel (5 coins)	Halving x PostETF	-0.0369	0.001	Supported***
+	M2 control	Halving x PostETF	-0.0318	0.113	Directional
+
+Note: *** p<0.01, ** p<0.05, * p<0.10. Verdict based on interaction term significance.

@@ -1,0 +1,31 @@
+Table A.5: M2 Growth Robustness — Full OLS Output
+Variable	Coefficient	Std Err (HAC)	z-stat	p-value	95% CI
+const	+0.0001	0.0050	0.021	0.9830	[-0.0100, 0.0100]
+dFedRate	-0.1582**	0.0650	-2.423	0.0150	[-0.2860, -0.0300]
+dFedBS	-0.0045	0.0040	-1.139	0.2550	[-0.0120, 0.0030]
+HalvingWindow	+0.0293***	0.0110	2.639	0.0080	[0.0080, 0.0510]
+PostETF	-0.0012	0.0190	-0.064	0.9490	[-0.0380, 0.0360]
+FedRate_x_PostETF	+0.0878	0.1250	0.702	0.4820	[-0.1570, 0.3330]
+FedBS_x_PostETF	-0.0353	0.0250	-1.422	0.1550	[-0.0840, 0.0130]
+Halving_x_PostETF	-0.0318	0.0200	-1.586	0.1130	[-0.0710, 0.0070]
+R_SP500	+0.3811	0.2740	1.392	0.1640	[-0.1560, 0.9180]
+R_BTC_lag1	+0.0317	0.0420	0.753	0.4510	[-0.0510, 0.1140]
+dVIX	-0.0029	0.0020	-1.500	0.1340	[-0.0070, 0.0010]
+dM2	+1.1333*	0.5990	1.893	0.0580	[-0.0400, 2.3070]
+					
+R-squared	0.076				
+Adj. R-squared	0.058				
+F-statistic	3.710				
+Prob (F-statistic)	3.97e-05				
+Log-Likelihood	591.09				
+AIC	-1158.				
+BIC	-1106.				
+Durbin-Watson	2.015				
+Omnibus	41.504				
+Jarque-Bera	160.301				
+Skew	-0.140				
+Kurtosis	5.545				
+Cond. No.	880				
+N	587				
+
+Note: HAC (Newey-West) standard errors, 10 lags. *** p<0.01, ** p<0.05, * p<0.10.

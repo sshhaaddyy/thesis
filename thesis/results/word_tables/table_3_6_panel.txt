@@ -1,0 +1,23 @@
+Table 3.6: Panel Fixed-Effects Robustness (5 Cryptocurrencies)
+Variable	Coefficient	Std Err (HAC)	p-value
+const	-0.0047	0.0040	0.2920
+dFedRate	-0.0665*	0.0370	0.0690
+dFedBS	-0.0012	0.0020	0.5410
+HalvingWindow	+0.0439***	0.0080	<0.0001
+PostETF	-0.0019	0.0060	0.7750
+FedRate_x_PostETF	+0.0101	0.0740	0.8910
+FedBS_x_PostETF	-0.0243	0.0150	0.1150
+Halving_x_PostETF	-0.0369***	0.0110	0.0010
+R_SP500	+0.4619***	0.1430	0.0010
+dVIX	-0.0047***	0.0010	<0.0001
+R_crypto_lag1	+0.0674**	0.0310	0.0310
+FE_ETH	-0.0019	0.0060	0.7600
+FE_XRP	-0.0019	0.0070	0.8000
+FE_LTC	-0.0042	0.0060	0.4970
+FE_BNB	+0.0073	0.0080	0.3480
+			
+R-squared	0.0800		
+Adj. R-squared	0.0740		
+N	2496		
+
+Note: Entity FE (BTC = reference). HAC (Newey-West) standard errors, 10 lags. *** p<0.01, ** p<0.05, * p<0.10.

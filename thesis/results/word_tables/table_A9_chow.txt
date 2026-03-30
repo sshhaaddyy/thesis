@@ -1,0 +1,6 @@
+Table A.9: Chow Structural Break Tests
+Breakpoint	Date	N (pre)	N (post)	F-stat	p-value	Reject H0
+Jan 2024 (ETF approval)	2024-01-10	484	114	0.9507	0.4667	False
+Oct 2023 (Grayscale/BlackRock)	2023-10-23	473	125	1.1177	0.3501	False
+
+Note: Chow structural break test. H0: no structural break at the specified date.
