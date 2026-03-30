@@ -1,0 +1,8 @@
+Table A.10: Model 1 Diagnostic Tests Summary
+Diagnostic Test	Statistic	p-value	Conclusion
+Breusch-Pagan (heteroskedasticity)	35.5858	0.0001	Reject H0 — heteroskedasticity present
+Durbin-Watson (autocorrelation)	2.0185	—	Near 2 — no autocorrelation
+Jarque-Bera (normality)	166.0731	0.0000	Reject normality (leptokurtic)
+Ramsey RESET (functional form)	0.7540	0.4709	Fail to reject — no misspecification
+
+Note: Breusch-Pagan and Jarque-Bera rejections are addressed by HAC standard errors and large-sample asymptotics.

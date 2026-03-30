@@ -1,0 +1,15 @@
+Table 3.2: Model 2 — Sub-Sample Split (Pre-ETF vs Post-ETF)
+Variable	Pre-ETF Coef	p-value	Post-ETF Coef	p-value
+const	+0.0012	0.8090	-0.0022	0.8550
+dFedRate	-0.1613**	0.0150	-0.0629	0.5350
+dFedBS	-0.0032	0.4030	-0.0237	0.1820
+HalvingWindow	+0.0301***	0.0070	+0.0018	0.8890
+R_SP500	+0.3158	0.3010	+0.3607	0.2860
+R_BTC_lag1	+0.0296	0.5100	+0.0908	0.1690
+dVIX	-0.0035	0.1200	-0.0022	0.3260
+				
+R-squared	0.0730		0.0780	
+Adj. R-squared	0.0610		0.0260	
+N	484		114	
+
+Note: HAC (Newey-West) standard errors, 10 lags. *** p<0.01, ** p<0.05, * p<0.10.

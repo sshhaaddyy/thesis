@@ -1,0 +1,26 @@
+Table A.3: Model 2 Post-ETF — Full OLS Output (2024-01-12 to 2026-03-13)
+Variable	Coefficient	Std Err (HAC)	z-stat	p-value	95% CI
+const	-0.0022	0.0120	-0.183	0.8550	[-0.0260, 0.0210]
+dFedRate	-0.0629	0.1010	-0.621	0.5350	[-0.2620, 0.1360]
+dFedBS	-0.0237	0.0180	-1.335	0.1820	[-0.0580, 0.0110]
+HalvingWindow	+0.0018	0.0130	0.139	0.8890	[-0.0230, 0.0260]
+R_SP500	+0.3607	0.3380	1.067	0.2860	[-0.3020, 1.0230]
+R_BTC_lag1	+0.0908	0.0660	1.376	0.1690	[-0.0390, 0.2200]
+dVIX	-0.0022	0.0020	-0.982	0.3260	[-0.0070, 0.0020]
+					
+R-squared	0.078				
+Adj. R-squared	0.026				
+F-statistic	3.882				
+Prob (F-statistic)	0.00152				
+Log-Likelihood	161.45				
+AIC	-308.9				
+BIC	-289.7				
+Durbin-Watson	2.071				
+Omnibus	7.607				
+Jarque-Bera	7.500				
+Skew	0.499				
+Kurtosis	3.764				
+Cond. No.	316				
+N	114				
+
+Note: HAC (Newey-West) standard errors, 10 lags. *** p<0.01, ** p<0.05, * p<0.10.

@@ -1,0 +1,15 @@
+Table A.7: Augmented Dickey-Fuller Unit Root Tests
+Variable	ADF Statistic	p-value	Lags	1% Critical	Stationary (5%)
+R_BTC	-22.7093	0.0	0	-3.4414	YES
+dFedRate	-2.601	0.0928	19	-3.4417	NO
+dFedBS	-4.6896	0.0001	15	-3.4416	YES
+HalvingWindow	-2.5159	0.1116	0	-3.4414	NO
+PostETF	-0.4829	0.8953	0	-3.4414	NO
+FedRate_x_PostETF	-5.569	0.0	19	-3.4417	YES
+FedBS_x_PostETF	-3.1633	0.0222	18	-3.4417	YES
+Halving_x_PostETF	-2.0909	0.2482	0	-3.4414	NO
+R_SP500	-26.8829	0.0	0	-3.4414	YES
+R_BTC_lag1	-22.6868	0.0	0	-3.4414	YES
+dVIX	-10.6513	0.0	9	-3.4415	YES
+
+Note: Augmented Dickey-Fuller test. Lag selection by AIC.
