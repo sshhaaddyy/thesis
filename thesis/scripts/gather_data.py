@@ -9,7 +9,7 @@ FRED API Key:
 """
 
 # ── FRED API KEY ────────────────────────────────────────────────────────────
-FRED_API_KEY = "REDACTED"
+FRED_API_KEY = ""  # paste your key here or set FRED_API_KEY env var
 # ────────────────────────────────────────────────────────────────────────────
 
 import os
